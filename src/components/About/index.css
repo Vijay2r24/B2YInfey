@@ -1,0 +1,346 @@
+.about-heading {
+  color: #fff;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.about-heading h5 {
+  font-weight: 400;
+  font-size: 18px;
+}
+.about-heading h1 {
+  font-size: 40px;
+  margin: 12px 0;
+}
+.about-heading p {
+  width: 90%;
+  max-width: 800px;
+  text-align: center;
+  font-size: 18px;
+  color: #cacaca;
+}
+.about-buttons {
+  width: 90%;
+  max-width: 800px;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.arrow-button {
+  margin: 8px 0;
+  padding: 12px 24px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+.arrow-icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+  transition: transform 0.3s ease-in-out;
+}
+.arrow-button:hover {
+  background-color: #2e3192;
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+.arrow-button:hover .arrow-icon {
+  transform: translateY(5px); /* Adjust the distance as needed */
+}
+
+@media screen and (max-width: 596px) {
+  .about-heading h5 {
+    font-size: 10px;
+  }
+  .about-heading h1 {
+    font-size: 24px;
+    margin: 12px 0;
+  }
+  .about-heading p {
+    width: 90%;
+    font-size: 14px;
+    margin: auto;
+  }
+  .about-buttons {
+    width: 90%;
+    margin: 12px auto;
+  }
+  .arrow-button {
+    padding: 10px 20px;
+  }
+}
+
+/* advantages section */
+
+.advantages_Container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 10px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.advantages_card {
+  width: calc(100% / 3.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 8px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+    rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  padding: 26px 30px;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  height: 320px;
+}
+.advantages_card:hover {
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+}
+.advantages_text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 8px;
+
+  text-align: center;
+}
+.advantages_head {
+  color: #222222;
+  text-transform: capitalize;
+  font-size: 1.5rem;
+  padding-bottom: 8px;
+}
+.advantages_para {
+  color: #777;
+  width: 98%;
+}
+@media screen and (max-width: 1024px) {
+  .advantages_card {
+    height: 370px;
+    width: 32%;
+  }
+  .advantages_Container {
+    gap: 12px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .advantages_card {
+    width: 45%;
+  }
+  .advantages_Container {
+    padding: 50px 20px;
+    gap: 12px;
+  }
+  .advantages_para {
+    width: 98%;
+    font-size: 1rem;
+  }
+  .advantages_head {
+    font-size: 1.5rem;
+    padding-bottom: 8px;
+  }
+}
+@media screen and (max-width: 425px) {
+  .advantages_card {
+    width: 100%;
+  }
+  .advantages_Container {
+    padding: 30px 30px;
+  }
+  .advantages_para {
+    color: #777;
+    width: 98%;
+    font-size: 1rem;
+  }
+  .advantages_head {
+    font-size: 1.3rem;
+    padding-bottom: 8px;
+  }
+}
+
+.storyContainer {
+  padding: 20px 40px;
+  width: 100%;
+}
+.storySection {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+.story_img1 {
+  width: 50%;
+}
+.storyimg1 {
+  width: 100%;
+  border-radius: 12px 200px 12px 200px;
+  object-fit: cover;
+  height: 400px;
+}
+.storyText {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+}
+.our_story_head {
+  font-size: 3.5rem;
+  color: #2e3192;
+}
+.space {
+  padding-left: 6px;
+}
+.out_story_subheading {
+  color: #494949;
+  font-size: 1.1rem;
+  margin-left: 10px;
+}
+.our-story_para {
+  color: #777;
+  font-size: 1rem;
+  width: 80%;
+  margin-left: 10px;
+}
+@media screen and (max-width: 1024px) {
+  .story_img1 img {
+    border-radius: 12px;
+    width: 100%;
+    height: 390px;
+  }
+  .storyText {
+    gap: 10px;
+  }
+  .our-story_para1 {
+    color: #777;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .storyContainer {
+    padding: 20px;
+  }
+  .story_img1 img {
+    border-radius: 12px;
+    width: 100%;
+    height: 290px;
+  }
+  .our-story_para1 {
+    font-size: 0.9rem;
+  }
+  .our_story_head {
+    font-size: 2rem;
+  }
+  .out_story_subheading {
+    font-size: 0.9rem;
+  }
+}
+@media screen and (max-width: 425px) {
+  .storySection {
+    flex-direction: column;
+  }
+  .story_img1 {
+    width: 100%;
+  }
+  .story_img1 img {
+    border-radius: 12px;
+    width: 100%;
+  }
+  .storyText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+  }
+  .reverse {
+    flex-direction: column-reverse;
+  }
+  .our_story_head {
+    font-size: 1.5rem;
+    color: #2e3192;
+  }
+  .out_story_subheading {
+    color: #494949;
+    font-size: 0.9rem;
+    margin: 0px;
+  }
+  .our-story_para1 {
+    color: #777;
+    font-size: 0.9rem;
+    width: 100%;
+    margin: 0px;
+  }
+}
+
+/* what we offer section */
+
+.what_we_offer_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 0px;
+}
+.what_we_offer_text {
+  text-align: center;
+}
+.what_we_offer_heading {
+  font-size: 2.5rem;
+  color: #2e3192;
+}
+.what_we_offer_subheading {
+  font-size: 1rem;
+  color: #777;
+}
+.what_we_offer_cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px 100px;
+  gap: 15px;
+}
+.what_we_offer_card {
+  width: 20%;
+  text-align: center;
+  padding: 20px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  border: 0.5px solid #bdbdbd;
+}
+.what_we_offer_card {
+  font-weight: 500;
+}
+@media screen and (max-width: 1024px) {
+  .what_we_offer_cards {
+    padding: 20px 50px;
+  }
+  .what_we_offer_card {
+    width: 40%;
+  }
+}
+@media screen and (max-width: 68px) {
+  .what_we_offer_heading {
+    font-size: 1.8rem;
+    color: #222222;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .what_we_offer_card {
+    width: 100%;
+  }
+  .what_we_offer_heading {
+    font-size: 1.5rem;
+    color: #222222;
+  }
+  .what_we_offer_subheading {
+    font-size: 0.9rem;
+    color: #777;
+  }
+}

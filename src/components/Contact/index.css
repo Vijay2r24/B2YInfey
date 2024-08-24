@@ -1,0 +1,362 @@
+.contact-heading {
+  color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.contact-heading h1 {
+  font-size: 40px;
+  margin: 12px 0;
+}
+.contact-heading p {
+  width: 90%;
+  max-width: 800px;
+  text-align: center;
+  font-size: 18px;
+  margin: auto;
+  color: #cacaca;
+}
+.contact-buttons {
+  width: 90%;
+  max-width: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5px;
+  margin: auto;
+}
+.arrow-button {
+  margin: 8px 0;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+}
+.arrow-icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.arrow-button:hover .arrow-icon {
+  transform: translateY(5px); /* Adjust the distance as needed */
+}
+
+.reach-out {
+  background-image: url("../../assets/images/contact.jpg");
+  height: auto;
+  width: 100%;
+  overflow-x: hidden;
+  background-size: cover;
+  display: flex;
+  justify-content: flex-end;
+}
+.reach-out-dark {
+  width: 100%;
+  display: flex;
+  background: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 0.8),
+    transparent
+  );
+  justify-content: flex-end;
+}
+.reach-out-content {
+  width: 50%;
+  color: #fff;
+  margin: 64px 36px;
+}
+.reach-out-content h1 {
+  margin: 48px 0;
+  font-size: 28px;
+}
+.reach-out-content p {
+  font-size: 16px;
+  text-align: justify;
+}
+
+.contact-us {
+  display: flex;
+  padding: 64px;
+  /* background-image: linear-gradient(to right,#FFDAB9, #ADD8E6,#FFFFFF); */
+  background-color: #fff;
+  color: #000;
+}
+.contact-us-left {
+  width: 55%;
+}
+.contact-us-left h1 {
+  font-size: 32px;
+  margin-bottom: 12px;
+  color: #2e3192;
+}
+.contact-us-left p {
+  font-size: 14px;
+  width: 70%;
+  text-align: justify;
+}
+.contact-icons-container {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.contact-icon-container {
+  display: flex;
+  gap: 24px;
+}
+.contact-icon {
+  border: 1px solid #000;
+  background-color: #2e3192;
+  padding: 12px;
+  align-self: center;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+}
+.contact-icon-content h1 {
+  color: #2e3192;
+  font-size: 24px;
+  margin-bottom: 3px;
+}
+.contact-icon-content address {
+  font-size: 14px;
+  color: #777;
+}
+.contact-icon-content p {
+  font-size: 14px;
+  color: #777;
+}
+
+.contact-us-right {
+  width: 45%;
+}
+.contact-us-right h1 {
+  color: #2e3192;
+}
+
+.contact-us-right form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.contact-us-right form input {
+  padding: 12px;
+  width: 100%;
+}
+/* Remove border around PhoneInput */
+.phone {
+  width: 100%;
+  padding: 8px 8px;
+  font-size: 16px;
+  border: none; /* Remove border */
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  border: 1px solid black;
+}
+.react-tel-input .form-control {
+  position: relative;
+  border: none;
+  width: 100%;
+}
+.react-tel-input .selected-flag {
+  outline: none;
+  position: relative;
+  width: 38px;
+  height: 100%;
+}
+.react-tel-input .selected-flag .flag {
+  position: absolute;
+  top: 50%;
+  margin-top: -5px;
+}
+.react-tel-input .flag-dropdown {
+  background-color: #fff;
+  border: none;
+  border-radius: 0;
+}
+.react-tel-input .selected-flag:hover,
+.react-tel-input .selected-flag:focus {
+  background-color: #fff;
+  border: none !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+.contact-us-right form input,
+.contact-us-right form textarea:focus {
+  outline: none;
+}
+.contact-us-right form textarea {
+  width: 100%;
+  padding: 12px;
+}
+.contact-us-right form textarea {
+  resize: none;
+}
+.contact-us form button {
+  padding: 12px 28px;
+  align-self: flex-start;
+  background-color: #2e3192;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+}
+/* .error {
+  max-width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #ff0000;
+} */
+@media screen and (max-width: 992px) {
+  .contact-us {
+    flex-direction: column;
+    align-items: center;
+    padding: 70px 12px;
+  }
+  .contact-us-left {
+    width: 90%;
+    max-width: 600px;
+  }
+  .contact-us-left h1 {
+    font-size: 28px;
+    margin-bottom: 18px;
+    text-align: center;
+  }
+  .contact-us-left p {
+    font-size: 16px;
+    width: 100%;
+    text-align: left;
+  }
+  .contact-icons-container {
+    margin: 48px 0;
+    align-items: center;
+  }
+  .contact-icon-container {
+    width: 75%;
+  }
+
+  .contact-icon-content h1 {
+    font-size: 22px;
+    text-align: left;
+    margin-bottom: 8px;
+  }
+  .contact-icon-container p,
+  .contact-icon-container address {
+    font-size: 14px;
+  }
+
+  .contact-us-right {
+    width: 90%;
+    max-width: 600px;
+    padding: 48px 0;
+  }
+
+  .contact-us-right form h1 {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 596px) {
+  .contact-heading h1 {
+    font-size: 24px;
+  }
+  .contact-heading p {
+    font-size: 14px;
+  }
+  .contact-buttons {
+    margin: 24px auto;
+  }
+  .arrow-button {
+    margin: 0;
+    padding: 12px;
+  }
+
+  .reach-out-dark {
+    width: 100%;
+    display: flex;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+    justify-content: flex-end;
+  }
+  .reach-out-content {
+    width: 100%;
+    color: #fff;
+  }
+  .reach-out-content h1 {
+    margin: 24px 0;
+    font-size: 28px;
+  }
+  .reach-out-content p {
+    font-size: 16px;
+    text-align: justify;
+  }
+
+  .contact-us-left {
+    width: 90%;
+  }
+  .contact-us-left h1 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+  .contact-us-left p {
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+  }
+  .contact-icons-container {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .contact-icon-container {
+    width: 100%;
+    display: flex;
+    gap: 12px;
+  }
+
+  .contact-icon-content h1 {
+    font-size: 18px;
+    text-align: left;
+    margin-bottom: 8px;
+  }
+  .contact-icon-container p,
+  .contact-icon-container address {
+    font-size: 12px;
+    text-align: left;
+  }
+
+  .contact-us-right {
+    width: 90%;
+    padding: 48px 0;
+  }
+
+  .contact-us-right form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .contact-us-right form h1 {
+    font-size: 20px;
+  }
+}

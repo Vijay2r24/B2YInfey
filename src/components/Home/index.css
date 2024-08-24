@@ -1,0 +1,209 @@
+.heading {
+  color: #fff;
+}
+.heading h5 {
+  font-weight: 400;
+  font-size: 20px;
+}
+.heading h1 {
+  font-size: 40px;
+  margin: 4px 0px;
+}
+.heading h3 {
+  text-align: right;
+  font-size: 22px;
+  font-weight: 400;
+  margin: 4px 0px 12px 0px;
+}
+
+.typewriter-text {
+  overflow: hidden; /* Ensures the text is not visible outside the containing element */
+  white-space: nowrap; /* Prevents text from wrapping */
+  margin: 0 auto; /* Center the text horizontally */
+  background: linear-gradient(40deg, #2e3192, #1bffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* Hide the original text color */
+  background-clip: text;
+  text-fill-color: transparent; /* Hide the original text color */
+  animation: typing 2.5s steps(120, end) 1;
+}
+/* Animation and keyframes for the typewriter effect */
+@keyframes typing {
+  0% {
+    width: 0;
+    border-right: 4px solid #30bebe;
+  }
+  50% {
+    width: 50%;
+    border-right: 4px solid #30bebea4;
+  }
+  80% {
+    width: 80%;
+    border-right: 4px solid #30bebe4d;
+  }
+  100% {
+    width: 100%;
+    border-right: transparent;
+  }
+}
+.home-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+}
+.home-buttons button {
+  padding: 12px 24px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 1.2s ease;
+  font-size: 16px;
+}
+
+.lets-talk {
+  background-color: #fff;
+  color: #2e3192;
+}
+.lets-talk:hover {
+  background-color: #2e3192;
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+.explore-us {
+  background-color: #2e3192;
+  color: #fff;
+  display: inline-block;
+  vertical-align: middle;
+  transition: transform 0.1s ease-in-out;
+}
+.arrow-icon {
+  /* rotate: -90deg; */
+  padding-left: 3px;
+  margin-left: 6px;
+}
+.explore-us:hover .arrow-icon {
+  transform: translateY(5px); /* Adjust the distance as needed */
+}
+
+.why-choose-us {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+  /* background-image: linear-gradient(to right,#E6E6FA, #F8F8FF,#FFFFFF); */
+  background-color: #fff;
+}
+
+.why-choose-us-head {
+  font-size: 2.5rem;
+  width: 90%;
+  max-width: 600px;
+  color: #2e3192;
+}
+.why-choose-us-description {
+  font-size: 1rem;
+  width: 90%;
+  max-width: 600px;
+  margin-bottom: 36px;
+  color: #777;
+}
+
+.choose-us-card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.heading_text {
+  color: #222222;
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+.description_text {
+  color: #777;
+  width: 90%;
+  font-size: 1rem;
+  font-weight: 400;
+}
+/* .chrono-cont {
+  height: auto;
+  border: 1px solid red;
+} */
+.video {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 40px 0 0;
+}
+.youtube {
+  height: 590px;
+  width: 1050px;
+}
+
+@media screen and (max-width: 992px) {
+  .why-choose-us-description {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 596px) {
+  .heading h5 {
+    font-size: 2.5rem;
+  }
+  .heading h1 {
+    font-size: 24px;
+  }
+  .heading h3 {
+    font-size: 14px;
+  }
+  .home-buttons button {
+    padding: 8px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 1.2s ease;
+    font-size: 12px;
+  }
+  .why-choose-us {
+    padding: 16px;
+    padding-top: 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+    /* background-image: linear-gradient(to right,#E6E6FA, #F8F8FF,#FFFFFF); */
+    background-color: #fff;
+  }
+
+  .why-choose-us-description {
+    font-size: 16px;
+  }
+  .description_text {
+    color: #777;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+  .fUSemk {
+    font-size: 0.9rem !important;
+    padding: 0px !important;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .fUSemk {
+    font-size: 0.8rem !important;
+  }
+  .why-choose-us-head {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 425px) {
+  .why-choose-us-head {
+    font-size: 2rem;
+  }
+}

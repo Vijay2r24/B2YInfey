@@ -1,0 +1,145 @@
+.services-page {
+  color: #fff;
+  text-align: center;
+}
+.services-page h1 {
+  font-size: 40px;
+  margin: 12px 0;
+}
+.services-page p {
+  width: 90%;
+  max-width: 800px;
+  text-align: center;
+  font-size: 18px;
+  margin: auto;
+  color: #cacaca;
+}
+.services-page-buttons {
+  width: 90%;
+  max-width: 800px;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  padding-top: 5px;
+}
+.our_services_section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 60px;
+}
+.our_service {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.our_service_heading {
+  color: #2e3192;
+  font-size: 2.5rem;
+}
+.our_service_para {
+  color: #777;
+  font-size: 1rem;
+}
+.our_service_content {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 30px;
+  gap: 10px;
+}
+.our_service_card {
+  width: 31%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+    rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  padding: 40px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.our_service_card:hover {
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+}
+.service_card_content {
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.card_heading {
+  font-size: 1.4rem;
+  color: #222222;
+}
+.card_para {
+  font-size: 1rem;
+  color: #777;
+}
+/* .svg {
+  height;
+} */
+.icon {
+  height: 80px;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  background-color: #2e3192;
+}
+@media screen and (max-width: 1024px) {
+  .our_service_content {
+    padding: 10px;
+  }
+  .our_service_card {
+    width: 32%;
+  }
+  .card_heading {
+    font-size: 1rem;
+  }
+  .our_services_section {
+    padding: 30px;
+  }
+  .our_service_card {
+    padding: 20px 10px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .our_service_content {
+    padding-top: 10px;
+  }
+  .our_service_card {
+    width: 49%;
+  }
+  .card_heading {
+    font-size: 1rem;
+  }
+  .card_para {
+    font-size: 0.8rem;
+    color: #777;
+  }
+}
+@media screen and (max-width: 425px) {
+  .our_service_card {
+    width: 100%;
+  }
+  .our_services_section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px;
+  }
+  .our_service_para {
+    color: #777;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+}

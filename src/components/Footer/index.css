@@ -1,0 +1,254 @@
+.footer {
+  padding: 32px 32px 32px 96px;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border-top: 1px solid #e5e7e9;
+  border-bottom: 1px solid #e5e7e9;
+  padding: 64px 0;
+}
+
+.footer-b2y {
+  width: 40%;
+}
+
+.footer-b2y p {
+  font-size: 14px;
+  margin: 12px 0;
+  text-align: justify;
+  word-spacing: 1px;
+  color: #777;
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+.footer-social-links {
+  display: flex;
+  gap: 24px;
+  margin: 36px 0;
+}
+.footer-social-links a {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.5px solid #e5e7e9;
+  border-radius: 100%;
+}
+.instagram {
+  background: linear-gradient(310deg, #f9ce34, #ee2a7b, #6228d7);
+  color: #fff;
+}
+.instagram .social_icons {
+  color: #fff;
+}
+.facebook {
+  background: linear-gradient(120deg, #0165e1, #17a9fd);
+}
+.facebook .social_icons {
+  color: #fff;
+}
+.linkedin {
+  background: #0077b5;
+}
+.linkedin .social_icons {
+  color: #fff;
+}
+.twitter {
+  background: #1da1f2;
+}
+.youtube {
+  background: #ff0000;
+}
+.youtube .white {
+  color: #fff;
+}
+.whatsapp {
+  background-color: #25d366;
+}
+.twitter .social_icons {
+  color: #fff;
+}
+.social_icons {
+  height: 22px;
+  width: 22px;
+  color: black;
+}
+.footer-company,
+.footer-support {
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.footer-address {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.footer-company h1,
+.footer-support h1,
+.footer-address h1 {
+  font-size: 16px;
+  margin-bottom: 16px;
+  color: #2e3192;
+}
+
+.footer-company p,
+.footer-support a {
+  color: #000000;
+  padding: 8px;
+  display: inline-block;
+  position: relative;
+  font-size: 14px;
+}
+.footer-address address {
+  color: #000000;
+  padding: 8px;
+  display: inline-block;
+  position: relative;
+  font-size: 14px;
+  text-align: center;
+}
+.footer-company p::after,
+.footer-support a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #2e3192;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+.footer-company p:hover::after,
+.footer-support a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.copy-rights {
+  font-size: 14px;
+  text-align: center;
+  padding: 24px 0;
+}
+.copy-rights span {
+  color: #ff6347;
+  font-weight: 500;
+}
+.arrow-up {
+  margin-left: auto;
+  margin-right: 36px;
+  border: 2px solid #e2eae8;
+  border-radius: 50%;
+  background-color: #2e3192;
+  padding: 12px;
+  box-shadow: 0px 4px 8px #e2eae8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 20px;
+  transition: transform 0.3s ease-in-out;
+  color: #fff;
+}
+.arrow-up:hover {
+  transform: translateY(-5px); /* Adjust the distance for the hover effect */
+}
+
+@media screen and (max-width: 992px) {
+  .footer {
+    padding: 32px 32px 32px 32px;
+    display: flex;
+    flex-direction: column;
+  }
+  .footer-b2y {
+    width: 100%;
+  }
+  .footer-address {
+    width: 50%;
+  }
+  .footer-company {
+    width: 25%;
+  }
+  .footer-support {
+    width: 25%;
+  }
+  .footer-social-links {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 596px) {
+  .footer {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+
+    padding: 32px 0;
+  }
+
+  .footer-b2y {
+    width: 100%;
+  }
+
+  .footer-social-links {
+    width: 100%;
+    max-width: 250px;
+    display: flex;
+    justify-content: space-between;
+    margin: 36px auto;
+  }
+  .footer-social-links span {
+    font-size: 16px;
+  }
+
+  .footer-company,
+  .footer-support,
+  .footer-address {
+    width: 100%;
+    max-width: 350px;
+    margin: 16px auto;
+  }
+
+  .footer-company h1,
+  .footer-support h1 {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .copy-rights {
+    font-size: 12px;
+    text-align: center;
+    padding: 24px 0;
+  }
+  .copy-rights span {
+    color: tomato;
+  }
+}
+@media screen and (max-width: 425px) {
+  .footer-social-links {
+    display: flex;
+    align-items: center;
+  }
+  .footer-social-links a {
+    height: 40px;
+    width: 40px;
+  }
+  .footer-social-links {
+    gap: 12px;
+  }
+}

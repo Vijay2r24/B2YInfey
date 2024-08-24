@@ -1,0 +1,101 @@
+@font-face {
+  font-family: "lucidacalligraphy";
+  src: url("../../fonts/lucida\ calligraphy\ italic.ttf") format("truetype");
+  /* Additional font styles like font-weight, font-style can be specified here */
+}
+
+nav {
+  padding: 5px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+}
+.menu-icon {
+  display: none;
+  cursor: pointer;
+}
+
+.menu-icon .times {
+  transform: rotate(360deg);
+  transition: all 0.2s ease-in-out;
+}
+
+.menu-icon .bars {
+  transform: rotate(180deg);
+  transition: all 0.2s ease-in-out;
+}
+.logo {
+  position: relative;
+  width: 100%;
+}
+.logo_img {
+  width: 90px;
+  height: 100px;
+}
+.logo_sub {
+  position: absolute;
+  bottom: 8px;
+  font-family: "lucidacalligraphy";
+  margin-left: 63px;
+  color: #ff6247;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.menu-list {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 36px;
+}
+.menu-list li {
+  text-decoration: none;
+  font-weight: 500;
+  color: #00000077;
+  padding: 5px 10px;
+  margin-left: 20px;
+}
+.menuList_hover:hover {
+  color: #37d3d3;
+  transition: all 0.3s ease-in-out;
+}
+@media screen and (max-width: 992px) {
+  .menu-list li {
+    font-size: 14px;
+    margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: 596px) {
+  .menu-icon {
+    display: block;
+  }
+  .menu-list {
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.7);
+    left: 0;
+    top: 115px;
+    transition: all 0.7s ease-in-out;
+  }
+  .menu-list li {
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+  }
+  .menu-list li:last-child {
+    margin-bottom: 0px;
+  }
+
+  .menu-list.close {
+    left: -110%;
+    transition: all 0.5s ease-in-out;
+  }
+}
