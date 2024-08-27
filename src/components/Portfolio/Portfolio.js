@@ -1355,14 +1355,6 @@ const Portfolio = () => {
               bgColor=""
             />
           </SwiperSlide>
-          <SwiperSlide className="swiper-slide-custom">
-      <Box
-        title="Yadhumadi"
-        description="Farmer & Nature Protection NGO"
-        icone={Mantra}
-        bgColor="box-bg-light-green" // Add custom class for background color if needed
-      />
-    </SwiperSlide>
           {/* <SwiperSlide>
             <Box
               title="Astrology Offline"
@@ -1371,14 +1363,6 @@ const Portfolio = () => {
               bgColor=""
             />
           </SwiperSlide> */}
-           <SwiperSlide className='swiper-slide-Nexa'>
-            <Box
-              title="Astrology Offline"
-              description="Expert Astrologist Website"
-              icone={Nexa}
-              bgColor=""
-            />
-          </SwiperSlide> 
           <SwiperSlide>
             <Box
               title="New Service"
@@ -1396,6 +1380,14 @@ const Portfolio = () => {
               bgColor=""
             />
           </SwiperSlide>
+          <SwiperSlide className='swiper-slide-Nexa'>
+            <Box
+              title="Astrology Offline"
+              description="Expert Astrologist Website"
+              icone={Nexa}
+              bgColor=""
+            />
+          </SwiperSlide> 
           <SwiperSlide className="swiper-slide-trgt">
     <Box
       title="New Service"
@@ -1414,6 +1406,14 @@ const Portfolio = () => {
     >
     </Box>
 </SwiperSlide>
+<SwiperSlide className="swiper-slide-custom">
+      <Box
+        title="Yadhumadi"
+        description="Farmer & Nature Protection NGO"
+        icone={Mantra}
+        bgColor="box-bg-light-green" // Add custom class for background color if needed
+      />
+    </SwiperSlide>
 
         </Swiper>
         </div>
