@@ -1200,7 +1200,7 @@ import React, { useEffect } from 'react';
 import { Front } from "../styledComponent";
 import { FaArrowDown } from "react-icons/fa6";
 import MCDMF from "../../assets/images/mcdf.jpg";
-import OurMissionImg2 from "../../assets/images/red.png";
+import OurMissionImg2 from "../../assets/images/red.jpg";
 import './portfolio.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
@@ -1208,20 +1208,20 @@ import AOS from 'aos';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'aos/dist/aos.css';
-import Loud from '../../assets/logo/loudstier.png';
+import Loud from '../../assets/logo/loudstier.jpg';
 import Geeks from '../../assets/logo/geeks.svg';
 // import Focify from '../../assets/logo/focify.png';
-import Sustaine from '../../assets/logo/sustaine.png';
+import Sustaine from '../../assets/logo/sustaine.jpg';
 import { GoArrowRight } from "react-icons/go";
-import Real from '../../assets/images/realstateImg.png';
+import Real from '../../assets/images/realstateImg.jpg';
 import 'aos/dist/aos.css';
 import { ChevronRightIcon } from '@heroicons/react/20/solid';
-import Mantra from '../../assets/logo/MantraLabs.svg';
-import Trgt from '../../assets/images/Frame 1000004005.png';
-import IdeaHub from  '../../assets/images/idea.png';
-import CMS from    '../../assets/images/CMD.png';
-import Nexa from   '../../assets/logo/nexa.jpeg';
-import MCDMFlogo from '../../assets/images/Mcdmf1 (1).png'
+import Mantra from '../../assets/logo/MantraLabs.jpg';
+import Trgt from '../../assets/images/Frame 1000004005.jpg';
+import IdeaHub from  '../../assets/images/idea.jpg';
+import CMS from    '../../assets/images/CMD.jpg';
+import Nexa from   '../../assets/logo/nexa.jpg';
+import MCDMFlogo from '../../assets/images/Mcdmf1 (1).jpg'
 
 
 const Portfolio = () => {
