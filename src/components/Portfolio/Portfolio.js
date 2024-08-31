@@ -1363,7 +1363,7 @@ const Portfolio = () => {
               bgColor=""
             />
           </SwiperSlide> */}
-          <SwiperSlide>
+          <SwiperSlide className='swiper-slide-Geeks'>
             <Box
               title="New Service"
               description="A new exciting service"

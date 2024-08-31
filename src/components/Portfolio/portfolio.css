@@ -657,6 +657,8 @@ body {
   height:100px;
   border-radius: 10px;
 }
+.swiper-slide-Geeks .icone{
+}
 .custom-icon-size {
   width: 10px;  /* Adjust as needed */
   height: 10px; /* Adjust as needed */
@@ -704,17 +706,6 @@ img {
   height:100px;
   margin-right:0%;
 }
-
-.our-story_para {
-  color: white;
-  font-size: 1rem;
-  width: 100%;
-  margin-left:500px;
-}
-
-
-
-
 
 
 @media screen and (max-width: 1024px) {
@@ -957,14 +948,6 @@ flex-direction: column;
   padding: 1rem;
 }
 
-.our-story_para {
-  display: flex;
-  align-items: center;
-  font-size: 1.300rem;
-  color: #2d3748;
-  margin-bottom: 0.5rem;
-}
-
 .headding {
   font-size: 1.5rem;
   font-weight: bold;
@@ -1003,12 +986,6 @@ flex-direction: column;
   margin-bottom: 15px;
 }
 
-.our-story_para {
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  margin: 10px 0;
-}
 .shadow-lg {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* Increased shadow on all four sides */
 }
@@ -1036,9 +1013,6 @@ flex-direction: column;
     font-size: 1.75rem;
   }
 
-  .our-story_para {
-    font-size: 0.95rem;
-  }
 }
 
 @media (max-width: 768px) {
@@ -1046,9 +1020,6 @@ flex-direction: column;
     font-size: 1.5rem;
   }
 
-  .our-story_para {
-    font-size: 0.9rem;
-  }
 }
 
 @media (max-width: 480px) {
@@ -1080,7 +1051,4 @@ flex-direction: column;
     font-size: 1.25rem;
   }
 
-  .our-story_para {
-    font-size: 0.8rem;
-  }
 }

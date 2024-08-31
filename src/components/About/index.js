@@ -70,7 +70,7 @@ const About = () => {
                 From Vision to Venture
               </span>
             </div>
-            <p className="our-story_para1">
+            <p className="our-story_para">
               Established from a mutual enthusiasm for pioneering technology,
               B2Y was conceived by a consortium of experienced professionals
               united by a common goal to establish a company transcending
@@ -90,7 +90,7 @@ const About = () => {
                 Empowering Your Digital Journey
               </span>
             </div>
-            <p className="our-story_para1">
+            <p className="our-story_para">
               Born from a shared passion for cutting-edge technology, B2Y was
               founded by a group of seasoned professionals with a collective
               vision to create a company that goes beyond conventional IT
