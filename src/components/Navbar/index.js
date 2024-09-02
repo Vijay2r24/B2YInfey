@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { menuItemsList } from "../../constants/index";
 import Logo from "../../assets/logo/logoPinkTransperant.png";
 
+ 
+
 const Navbar = () => {
   // State variables
   const [selectedItem, setSelectedItem] = useState(null); // Keeps track of the currently selected menu item

@@ -1221,9 +1221,7 @@ import Trgt from '../../assets/images/Frame 1000004005.jpg';
 import IdeaHub from  '../../assets/images/idea.jpg';
 import CMS from    '../../assets/images/CMD.jpg';
 import Nexa from   '../../assets/logo/nexa.jpg';
-import MCDMFlogo from '../../assets/images/Mcdmf1 (1).jpg'
-
-
+import MCDMFlogo from '../../assets/images/Mcdmf1 (1).jpg';
 const Portfolio = () => {
   useEffect(() => {
     AOS.init({ duration: 1200 }); // Initialize AOS animations
@@ -1263,7 +1261,7 @@ const Portfolio = () => {
     {
       title: 'Digital Marketing',
       description: ['SEO (Search Engine Optimization)', 'SMM (Social media marketing)', 'Branding'],
-      imageUrl: require('../../assets/images/social1.png'),
+      imageUrl: require('../../assets/images/social1.jpg'),
       bgimage: require('../../assets/images/curveline.jpg'),
       bgColor: '#FFFF',
       textColor: 'text-black',
@@ -1683,7 +1681,8 @@ const Portfolio = () => {
     <img
       src={service.imageUrl}
       alt={service.title}
-      className="w-10 sm:w-[13%] border border-gray-400 object-cover"
+     className="w-10 sm:w-[13%] border border-gray-400 object-cover"
+      
     />
   </div>
   <h3 className="relative z-20 text-lg sm:text-xl font-semibold mb-2 sm:mb-4">
