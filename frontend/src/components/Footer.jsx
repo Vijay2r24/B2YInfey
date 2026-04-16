@@ -6,7 +6,7 @@ const Footer = () => {
   const { isActive } = useSectionActive();
 
   return (
-    <div className={`relative w-full h-full flex items-center bg-[#f5f5f5] ${isActive ? 'section-active' : ''}`}
+    <div className={`relative w-full h-full flex items-center bg-white ${isActive ? 'section-active' : ''}`}
       style={{ fontFamily: 'Poppins, sans-serif' }}>
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10 w-full">
         <div className="grid md:grid-cols-2 gap-12 items-start">

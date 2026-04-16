@@ -36,7 +36,7 @@ const ClientsSection = () => {
   }, [testApi, onTestSelect]);
 
   return (
-    <div className={`relative w-full h-full flex flex-col justify-center bg-[#f5f5f5] overflow-hidden ${isActive ? 'section-active' : ''}`}
+    <div className={`relative w-full h-full flex flex-col justify-center bg-white overflow-hidden ${isActive ? 'section-active' : ''}`}
       style={{ fontFamily: 'Poppins, sans-serif' }}>
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10 w-full">
         <h2 className="section-content delay-1 text-[#222] text-3xl md:text-4xl font-semibold mb-8"

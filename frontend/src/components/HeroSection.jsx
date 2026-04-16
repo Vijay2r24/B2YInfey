@@ -26,24 +26,41 @@ const HeroSection = () => {
 
   return (
     <div className={`relative w-full h-full overflow-hidden bg-[#0a0a2e] ${isActive ? 'section-active' : ''}`}>
-      {/* Video Background */}
-      <div className="absolute inset-0 z-0">
-        <iframe
-          src="https://player.vimeo.com/video/1106428062?title=0&byline=0&portrait=0&autoplay=1&autopause=0&muted=1&background=1"
-          className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2"
-          style={{
-            opacity: 0.9,
-            backgroundColor: 'hsla(240, 40%, 8%, 0.7)',
-            backdropFilter: 'blur(15px)',
-            filter: 'contrast(0.9)',
-            border: 'none',
-            width: '100vw',
-            height: '500%',
-          }}
-          allow="autoplay; fullscreen"
-          allowFullScreen
-          title="B2Y Background Video"
-        />
+      {/* Animated Background */}
+      <div className="hero-animated-bg">
+        {/* Gradient orbs */}
+        <div className="hero-orb hero-orb-1"></div>
+        <div className="hero-orb hero-orb-2"></div>
+        <div className="hero-orb hero-orb-3"></div>
+        <div className="hero-orb hero-orb-4"></div>
+
+        {/* Grid lines */}
+        <div className="hero-grid"></div>
+
+        {/* Floating particles */}
+        <div className="hero-particles">
+          {Array.from({ length: 20 }).map((_, i) => (
+            <div
+              key={i}
+              className="hero-particle"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                width: `${2 + Math.random() * 4}px`,
+                height: `${2 + Math.random() * 4}px`,
+                animationDelay: `${Math.random() * 8}s`,
+                animationDuration: `${6 + Math.random() * 8}s`,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Flowing lines */}
+        <svg className="hero-flow-lines" viewBox="0 0 1920 800" preserveAspectRatio="none">
+          <path className="hero-flow-line hero-flow-line-1" d="M0,400 C480,200 960,600 1920,300" />
+          <path className="hero-flow-line hero-flow-line-2" d="M0,500 C640,300 1280,700 1920,400" />
+          <path className="hero-flow-line hero-flow-line-3" d="M0,600 C320,400 1120,800 1920,500" />
+        </svg>
       </div>
 
       {/* Established text */}
@@ -83,8 +100,8 @@ const HeroSection = () => {
                     selectedIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
                     <a href={heroData.ctaLink}
-                      className="inline-block text-white text-[11px] tracking-wide px-6 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 hover:shadow-[#00d4ff]/20"
-                      style={{ backgroundColor: 'hsla(240, 40%, 8%, 0.7)', backdropFilter: 'blur(15px)', fontFamily: 'Poppins, sans-serif' }}>
+                      className="inline-block text-white text-[11px] tracking-wide px-6 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 hover:shadow-[#00d4ff]/20 border border-white/20"
+                      style={{ backgroundColor: 'hsla(240, 40%, 12%, 0.6)', backdropFilter: 'blur(15px)', fontFamily: 'Poppins, sans-serif' }}>
                       {heroData.ctaText}
                     </a>
                   </div>

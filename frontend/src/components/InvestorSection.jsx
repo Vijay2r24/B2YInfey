@@ -6,7 +6,7 @@ const InvestorSection = () => {
   const { isActive } = useSectionActive();
 
   return (
-    <div className={`relative w-full h-full flex items-center bg-[#f5f5f5] ${isActive ? 'section-active' : ''}`}>
+    <div className={`relative w-full h-full flex items-center bg-white ${isActive ? 'section-active' : ''}`}>
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10 w-full">
         <div className="section-scale-in delay-1 bg-white rounded-2xl overflow-hidden shadow-xl" style={{ fontFamily: 'Poppins, sans-serif' }}>
           <div className="grid lg:grid-cols-12">
