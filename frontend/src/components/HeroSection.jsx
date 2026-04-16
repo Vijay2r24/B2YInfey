@@ -17,24 +17,35 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen bg-[#0d1b1e] flex items-center overflow-hidden">
-      {/* Animated background gradient */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0d1b1e] via-[#0d1b1e] to-[#142e2e] opacity-90"></div>
-        {/* Subtle animated particles */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#1a3a3a] rounded-full filter blur-[120px] opacity-30 animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[#0f2a2a] rounded-full filter blur-[100px] opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-[#0d1b1e]">
+      {/* Video Background */}
+      <div className="absolute inset-0 z-0">
+        <iframe
+          src="https://player.vimeo.com/video/1106428062?title=0&byline=0&portrait=0&autoplay=1&autopause=0&muted=1&background=1"
+          className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2"
+          style={{
+            opacity: 0.9,
+            backgroundColor: 'hsla(210, 20%, 10%, 0.7)',
+            backdropFilter: 'blur(15px)',
+            filter: 'contrast(0.9)',
+            border: 'none',
+            width: '100vw',
+            height: '500%',
+          }}
+          allow="autoplay; fullscreen"
+          allowFullScreen
+          title="B2B Background Video"
+        />
       </div>
 
       {/* Established text - vertical on left */}
-      <div className="absolute left-6 top-1/2 -translate-y-1/2 hidden lg:block">
+      <div className="absolute left-6 top-1/2 -translate-y-1/2 hidden lg:block z-10">
         <div
-          className="text-gray-500 text-xs tracking-[0.4em] uppercase"
+          className="text-gray-500 text-xs tracking-[0.3em]"
           style={{
             writingMode: 'vertical-lr',
             transform: 'rotate(180deg)',
             fontFamily: 'Poppins, sans-serif',
-            letterSpacing: '0.4em',
           }}
         >
           {heroData.established}
@@ -42,15 +53,15 @@ const HeroSection = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-20 pt-32 pb-20 w-full">
+      <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-20 pt-32 pb-20 w-full">
         <div className="max-w-3xl">
           <div
             ref={headingRef}
             className={`reveal-slide-top ${headingVisible ? 'revealed' : ''}`}
           >
             <h1
-              className="text-white text-4xl md:text-5xl lg:text-6xl font-light mb-8 leading-tight"
-              style={{ fontFamily: 'Poppins, sans-serif' }}
+              className="text-white text-4xl md:text-5xl lg:text-[3.5rem] font-light mb-6 leading-tight"
+              style={{ fontFamily: "'Myriad Pro', Arial, sans-serif" }}
             >
               {heroData.heading}
             </h1>
@@ -60,19 +71,18 @@ const HeroSection = () => {
             ref={subtitleRef}
             className={`reveal-slide-top reveal-delay-2 ${subtitleVisible ? 'revealed' : ''}`}
           >
-            <p
-              className="text-gray-400 text-xs md:text-sm tracking-[0.15em] uppercase mb-4 max-w-2xl"
+            <h3
+              className="text-gray-300 text-[15px] mb-2 leading-relaxed"
               style={{ fontFamily: 'Poppins, sans-serif' }}
             >
               {heroData.subtitle}
-            </p>
-
-            <p
-              className="text-gray-300 text-sm md:text-base mb-10 max-w-2xl font-light"
+            </h3>
+            <h3
+              className="text-gray-300 text-[15px] mb-10"
               style={{ fontFamily: 'Poppins, sans-serif' }}
             >
               {heroData.description}
-            </p>
+            </h3>
           </div>
 
           <div
@@ -81,8 +91,14 @@ const HeroSection = () => {
           >
             <a
               href={heroData.ctaLink}
-              className="inline-block bg-[#2a2a2a] hover:bg-[#3a3a3a] text-white text-xs tracking-[0.15em] uppercase px-8 py-4 rounded transition-all duration-300 hover:shadow-lg hover:shadow-[#4ecdc4]/10"
-              style={{ fontFamily: 'Poppins, sans-serif' }}
+              className="inline-block text-white text-[11px] tracking-wide px-6 py-3 rounded-full transition-all duration-300 hover:shadow-lg"
+              style={{
+                opacity: 0.9,
+                backgroundColor: 'hsla(210, 20%, 10%, 0.7)',
+                backdropFilter: 'blur(15px)',
+                filter: 'contrast(0.9)',
+                fontFamily: 'Poppins, sans-serif',
+              }}
             >
               {heroData.ctaText}
             </a>
@@ -91,14 +107,14 @@ const HeroSection = () => {
       </div>
 
       {/* Slide Dots - right side */}
-      <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-3">
+      <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-3 z-10">
         {Array.from({ length: totalSlides }).map((_, i) => (
           <button
             key={i}
             onClick={() => setActiveSlide(i)}
             className={`w-3 h-3 rounded-full transition-all duration-300 border ${
               i === activeSlide
-                ? 'border-[#4ecdc4] bg-transparent scale-125'
+                ? 'border-[#c8a97e] bg-transparent scale-125'
                 : 'border-gray-600 bg-gray-600 hover:border-gray-400'
             }`}
           />
@@ -106,9 +122,9 @@ const HeroSection = () => {
       </div>
 
       {/* Copyright bottom */}
-      <div className="absolute bottom-6 left-6">
-        <p className="text-gray-600 text-xs tracking-wider uppercase" style={{ fontFamily: 'Poppins, sans-serif' }}>
-          Copyright &copy; 2026 b2bsoftech
+      <div className="absolute bottom-6 left-6 z-10">
+        <p className="text-gray-600 text-xs tracking-wider" style={{ fontFamily: 'Poppins, sans-serif' }}>
+          Copyright &copy; {new Date().getFullYear()} b2bsoftech
         </p>
       </div>
     </section>

@@ -1,61 +1,42 @@
 import React from 'react';
 import { products } from '../data/mock';
-import { Beaker, Settings, ShieldCheck, Users, Heart, Cpu } from 'lucide-react';
 import useScrollReveal from '../hooks/useScrollReveal';
 
-const iconMap = {
-  Flask: Beaker,
-  Settings: Settings,
-  ShieldCheck: ShieldCheck,
-  Users: Users,
-  Heart: Heart,
-  Cpu: Cpu,
-};
-
 const ProductCard = ({ product, index }) => {
-  const IconComponent = iconMap[product.icon];
-
   return (
-    <div
-      className="group relative bg-[#111f22] border border-[#1a3535] rounded-lg p-8 hover:border-[#4ecdc4]/40 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#4ecdc4]/5"
-      style={{ animationDelay: `${index * 100}ms` }}
+    <article
+      className="group rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
+      style={{
+        animationDelay: `${index * 100}ms`,
+      }}
     >
-      <div className="w-14 h-14 rounded-lg bg-[#1a3535] flex items-center justify-center mb-6 group-hover:bg-[#4ecdc4]/10 transition-colors duration-500">
-        {IconComponent && (
-          <IconComponent className="w-7 h-7 text-[#4ecdc4] group-hover:scale-110 transition-transform duration-300" />
-        )}
+      <div
+        className="h-full rounded-2xl p-6 md:p-8 flex flex-col"
+        style={{
+          borderTop: `8px solid ${product.borderColor}`,
+          backgroundColor: 'rgba(18, 18, 18, 0.7)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+        }}
+      >
+        <h3 className="text-white text-[17px] font-medium mb-4">
+          <a href={product.link} className="hover:text-gray-300 transition-colors duration-300">
+            {product.title}
+          </a>
+        </h3>
+        <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-1">
+          {product.description}
+        </p>
+        <div>
+          <a
+            href={product.link}
+            className="text-gray-300 text-[15px] hover:text-white transition-colors duration-300 inline-flex items-center gap-1"
+          >
+            Read More
+          </a>
+        </div>
       </div>
-
-      <h3
-        className="text-white text-lg font-semibold mb-4 group-hover:text-[#4ecdc4] transition-colors duration-300"
-        style={{ fontFamily: 'Poppins, sans-serif' }}
-      >
-        {product.title}
-      </h3>
-
-      <p
-        className="text-gray-400 text-sm leading-relaxed mb-6"
-        style={{ fontFamily: 'Poppins, sans-serif' }}
-      >
-        {product.description}
-      </p>
-
-      <a
-        href={product.link}
-        className="text-[#4ecdc4] text-sm font-medium hover:text-white transition-colors duration-300 inline-flex items-center gap-2"
-        style={{ fontFamily: 'Poppins, sans-serif' }}
-      >
-        Read More
-        <svg
-          className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
-      </a>
-    </div>
+    </article>
   );
 };
 
@@ -64,24 +45,27 @@ const ProductsSection = () => {
   const [gridRef, gridVisible] = useScrollReveal({ threshold: 0.1 });
 
   return (
-    <section id="products" className="relative bg-[#0a1517] py-20 lg:py-32">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-20">
+    <section
+      id="products"
+      className="relative min-h-screen flex items-center py-20 lg:py-28"
+      style={{
+        background: 'linear-gradient(to top, #24243e, #302b63, #0f0c29)',
+      }}
+    >
+      <div className="max-w-[1200px] mx-auto px-6 lg:px-10 w-full">
         <div
           ref={titleRef}
-          className={`mb-16 reveal-slide-top ${titleVisible ? 'revealed' : ''}`}
+          className={`mb-10 reveal-slide-top ${titleVisible ? 'revealed' : ''}`}
         >
-          <p
-            className="text-[#4ecdc4] text-sm tracking-[0.2em] uppercase mb-4"
-            style={{ fontFamily: 'Poppins, sans-serif' }}
-          >
+          <p className="text-gray-300 text-sm tracking-wider" style={{ fontFamily: 'Poppins, sans-serif' }}>
             Products and add-on's
           </p>
-          <div className="w-16 h-0.5 bg-[#4ecdc4]/40"></div>
         </div>
 
         <div
           ref={gridRef}
-          className={`grid md:grid-cols-2 lg:grid-cols-3 gap-8 reveal-slide-top reveal-delay-2 ${gridVisible ? 'revealed' : ''}`}
+          className={`grid md:grid-cols-2 lg:grid-cols-3 gap-5 reveal-slide-top reveal-delay-2 ${gridVisible ? 'revealed' : ''}`}
+          style={{ fontFamily: 'Poppins, sans-serif' }}
         >
           {products.map((product, index) => (
             <ProductCard key={product.id} product={product} index={index} />

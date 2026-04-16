@@ -1,93 +1,70 @@
 import React from 'react';
 import { investorData } from '../data/mock';
-import { ArrowRight, FileText, TrendingUp } from 'lucide-react';
 import useScrollReveal from '../hooks/useScrollReveal';
 
 const InvestorSection = () => {
-  const [imageRef, imageVisible] = useScrollReveal({ threshold: 0.2 });
-  const [contentRef, contentVisible] = useScrollReveal({ threshold: 0.2 });
+  const [cardRef, cardVisible] = useScrollReveal({ threshold: 0.2 });
 
   return (
-    <section id="investors" className="relative bg-[#0a1517] py-20 lg:py-28">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left - Image */}
+    <section id="investors" className="relative min-h-screen flex items-center py-20 lg:py-28 bg-[#f5f5f5]">
+      <div className="max-w-[1200px] mx-auto px-6 lg:px-10 w-full">
+        <div
+          ref={cardRef}
+          className={`reveal-slide-top ${cardVisible ? 'revealed' : ''}`}
+        >
           <div
-            ref={imageRef}
-            className={`relative group reveal-slide-top ${imageVisible ? 'revealed' : ''}`}
+            className="bg-white rounded-2xl overflow-hidden shadow-xl"
+            style={{ fontFamily: 'Poppins, sans-serif' }}
           >
-            <div className="overflow-hidden rounded-lg">
-              <img
-                src={investorData.graphImage}
-                alt="Annual Report"
-                className="w-full h-[300px] object-cover rounded-lg group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0a1517] via-transparent to-transparent rounded-lg"></div>
-            </div>
-            <div className="absolute bottom-4 left-4">
-              <span
-                className="text-white text-sm bg-[#0d1b1e]/80 backdrop-blur-sm px-4 py-2 rounded"
-                style={{ fontFamily: 'Poppins, sans-serif' }}
-              >
-                {investorData.reportTitle}
-              </span>
-            </div>
-          </div>
-
-          {/* Right - Content */}
-          <div
-            ref={contentRef}
-            className={`reveal-slide-top reveal-delay-2 ${contentVisible ? 'revealed' : ''}`}
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <TrendingUp className="w-6 h-6 text-[#4ecdc4]" />
-              <h3
-                className="text-[#4ecdc4] text-sm tracking-[0.2em] uppercase"
-                style={{ fontFamily: 'Poppins, sans-serif' }}
-              >
-                {investorData.sectionTitle}
-              </h3>
-            </div>
-
-            <h2
-              className="text-white text-2xl md:text-3xl font-semibold mb-8"
-              style={{ fontFamily: 'Poppins, sans-serif' }}
-            >
-              Stay Informed with Our Latest Reports
-            </h2>
-
-            <div className="space-y-4">
-              <a
-                href={investorData.reportLink}
-                className="flex items-center gap-4 bg-[#111f22] border border-[#1a3535] rounded-lg p-5 hover:border-[#4ecdc4]/40 transition-all duration-300 group"
-              >
-                <FileText className="w-8 h-8 text-[#4ecdc4]" />
-                <div className="flex-1">
-                  <span
-                    className="text-white text-sm font-medium block"
-                    style={{ fontFamily: 'Poppins, sans-serif' }}
-                  >
-                    Results
-                  </span>
-                  <span
-                    className="text-gray-400 text-xs"
-                    style={{ fontFamily: 'Poppins, sans-serif' }}
-                  >
-                    Annual Report – 2025
+            <div className="grid lg:grid-cols-12">
+              {/* Left - Image */}
+              <div className="lg:col-span-7 relative overflow-hidden">
+                <img
+                  src={investorData.graphImage}
+                  alt="Annual Report"
+                  className="w-full h-[300px] lg:h-full object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                  <span className="text-white text-lg font-medium">
+                    {investorData.reportTitle}
                   </span>
                 </div>
-                <ArrowRight className="w-5 h-5 text-gray-500 group-hover:text-[#4ecdc4] group-hover:translate-x-1 transition-all duration-300" />
-              </a>
-            </div>
+              </div>
 
-            <a
-              href="#investors"
-              className="inline-flex items-center gap-2 text-[#4ecdc4] text-sm font-medium mt-8 hover:text-white transition-colors duration-300"
-              style={{ fontFamily: 'Poppins, sans-serif' }}
-            >
-              View All
-              <ArrowRight size={16} />
-            </a>
+              {/* Right - Content */}
+              <div className="lg:col-span-5 p-8 lg:p-10 flex flex-col justify-center">
+                <h4
+                  className="text-2xl font-bold mb-6"
+                  style={{
+                    background: 'linear-gradient(135deg, #4ecdc4, #44a08d)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                  }}
+                >
+                  {investorData.sectionTitle}
+                </h4>
+
+                <div className="space-y-3 mb-6">
+                  <div className="border-b border-gray-200 pb-3">
+                    <small className="text-gray-500 text-xs block mb-1">Results</small>
+                    <a
+                      href={investorData.reportLink}
+                      className="text-[#333] text-sm font-medium hover:text-[#4ecdc4] transition-colors duration-300"
+                    >
+                      Annual Report – 2025
+                    </a>
+                  </div>
+                </div>
+
+                <a
+                  href="#investors"
+                  className="text-[#4ecdc4] text-sm font-medium hover:text-[#333] transition-colors duration-300 inline-block"
+                >
+                  View All →
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

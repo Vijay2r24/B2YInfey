@@ -37,7 +37,12 @@ const Counter = ({ target, duration = 2000 }) => {
   }, [isVisible, target, duration]);
 
   return (
-    <span ref={ref} className="text-7xl md:text-8xl lg:text-9xl font-bold text-[#4ecdc4]" style={{ fontFamily: 'Poppins, sans-serif' }}>
+    <span ref={ref} className="text-7xl md:text-8xl lg:text-[120px] font-bold leading-none" style={{
+      background: 'linear-gradient(135deg, #4ecdc4, #44a08d)',
+      WebkitBackgroundClip: 'text',
+      WebkitTextFillColor: 'transparent',
+      fontFamily: 'Poppins, sans-serif',
+    }}>
       {count}
     </span>
   );
@@ -48,11 +53,11 @@ const AboutSection = () => {
   const [contentRef, contentVisible] = useScrollReveal({ threshold: 0.2 });
 
   return (
-    <section id="about" className="relative bg-[#0d1b1e] py-20 lg:py-32 overflow-hidden">
-      {/* Decorative gradient */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#4ecdc4]/20 to-transparent"></div>
+    <section id="about" className="relative min-h-screen flex items-center bg-[#f5f5f5] py-20 lg:py-28 overflow-hidden">
+      {/* Circle background decoration */}
+      <div className="absolute -right-40 top-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-gray-300/30 opacity-20"></div>
 
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-20">
+      <div className="max-w-[1200px] mx-auto px-6 lg:px-10 w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left - Counter */}
           <div
@@ -60,8 +65,8 @@ const AboutSection = () => {
             className={`flex flex-col items-center lg:items-start reveal-slide-top ${counterVisible ? 'revealed' : ''}`}
           >
             <Counter target={aboutData.yearsCount} />
-            <div className="flex flex-col items-center lg:items-start mt-4">
-              <span className="text-white text-2xl font-light tracking-wider" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <div className="flex flex-col items-center lg:items-start mt-2">
+              <span className="text-[#333] text-2xl font-light tracking-wider" style={{ fontFamily: 'Poppins, sans-serif' }}>
                 {aboutData.yearsLabel}
               </span>
               <span className="text-gray-500 text-lg tracking-wider" style={{ fontFamily: 'Poppins, sans-serif' }}>
@@ -75,20 +80,20 @@ const AboutSection = () => {
             ref={contentRef}
             className={`reveal-slide-top reveal-delay-2 ${contentVisible ? 'revealed' : ''}`}
           >
-            <h2
-              className="text-white text-2xl md:text-3xl lg:text-4xl font-semibold mb-8 leading-tight"
+            <h3
+              className="text-[#4ecdc4] text-xl md:text-2xl font-bold mb-6 leading-tight relative inline-block"
               style={{ fontFamily: 'Poppins, sans-serif' }}
             >
               {aboutData.heading}
-            </h2>
+            </h3>
             <p
-              className="text-gray-400 text-sm md:text-base leading-relaxed mb-6"
+              className="text-[#555] text-sm leading-relaxed mb-5"
               style={{ fontFamily: 'Poppins, sans-serif' }}
             >
               {aboutData.description}
             </p>
             <p
-              className="text-gray-400 text-sm md:text-base leading-relaxed"
+              className="text-[#555] text-sm leading-relaxed"
               style={{ fontFamily: 'Poppins, sans-serif' }}
             >
               {aboutData.description2}

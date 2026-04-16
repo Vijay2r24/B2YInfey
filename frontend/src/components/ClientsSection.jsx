@@ -1,145 +1,100 @@
-import React, { useState, useEffect } from 'react';
-import { clients, testimonials } from '../data/mock';
-import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import React from 'react';
+import { clientLogos } from '../data/mock';
 import useScrollReveal from '../hooks/useScrollReveal';
 
 const ClientsSection = () => {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 6000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const handlePrev = () => {
-    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
-
-  const handleNext = () => {
-    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-  };
+  const [titleRef, titleVisible] = useScrollReveal({ threshold: 0.2 });
+  const [gridRef, gridVisible] = useScrollReveal({ threshold: 0.1 });
 
   return (
-    <section id="clients" className="relative bg-[#0d1b1e] py-20 lg:py-32">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-20">
-        {/* Section Title */}
-        <SectionTitle />
-
-        {/* Client Logos Grid */}
-        <ClientGrid />
-
-        {/* Testimonials Carousel */}
-        <TestimonialCarousel
-          currentTestimonial={currentTestimonial}
-          setCurrentTestimonial={setCurrentTestimonial}
-          handlePrev={handlePrev}
-          handleNext={handleNext}
-        />
-
-        {/* More link */}
-        <div className="text-center mt-10">
-          <a
-            href="#clients"
-            className="text-[#4ecdc4] text-sm hover:text-white transition-colors duration-300"
-            style={{ fontFamily: 'Poppins, sans-serif' }}
-          >
-            ...More
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-const SectionTitle = () => {
-  const [ref, isVisible] = useScrollReveal({ threshold: 0.3 });
-  return (
-    <div ref={ref} className={`text-center mb-16 reveal-slide-top ${isVisible ? 'revealed' : ''}`}>
-      <h2
-        className="text-white text-3xl md:text-4xl font-semibold mb-4"
-        style={{ fontFamily: 'Poppins, sans-serif' }}
-      >
-        Clients & Testimonials
-      </h2>
-      <div className="w-16 h-0.5 bg-[#4ecdc4]/40 mx-auto"></div>
-    </div>
-  );
-};
-
-const ClientGrid = () => {
-  const [ref, isVisible] = useScrollReveal({ threshold: 0.1 });
-  return (
-    <div ref={ref} className={`grid grid-cols-2 md:grid-cols-4 gap-6 mb-20 reveal-slide-top reveal-delay-2 ${isVisible ? 'revealed' : ''}`}>
-      {clients.map((client, i) => (
+    <section
+      id="clients"
+      className="relative min-h-screen flex items-center py-20 lg:py-28"
+      style={{
+        backgroundColor: '#f5f5f5',
+        fontFamily: 'Poppins, sans-serif',
+      }}
+    >
+      <div className="max-w-[1200px] mx-auto px-6 lg:px-10 w-full">
         <div
-          key={i}
-          className="bg-[#111f22] border border-[#1a3535] rounded-lg p-6 flex items-center justify-center hover:border-[#4ecdc4]/30 transition-all duration-300 hover:-translate-y-0.5 group"
+          ref={titleRef}
+          className={`mb-10 reveal-slide-top ${titleVisible ? 'revealed' : ''}`}
         >
-          <span
-            className="text-gray-400 text-sm font-medium text-center group-hover:text-white transition-colors duration-300"
-            style={{ fontFamily: 'Poppins, sans-serif' }}
-          >
-            {client.name}
-          </span>
+          <h2 className="text-[#222] text-3xl md:text-4xl font-semibold" style={{ fontFamily: "'Libre Baskerville', serif" }}>
+            Clients & Testimonials
+          </h2>
         </div>
-      ))}
-    </div>
-  );
-};
 
-const TestimonialCarousel = ({ currentTestimonial, setCurrentTestimonial, handlePrev, handleNext }) => {
-  const [ref, isVisible] = useScrollReveal({ threshold: 0.2 });
-  return (
-    <div ref={ref} className={`relative max-w-3xl mx-auto reveal-slide-top reveal-delay-3 ${isVisible ? 'revealed' : ''}`}>
-      <div className="text-center">
-        <Quote className="w-10 h-10 text-[#4ecdc4]/30 mx-auto mb-6" />
-        <div className="min-h-[120px] flex items-center justify-center">
-          <div key={currentTestimonial} className="animate-fade-in">
-            <p
-              className="text-gray-300 text-lg md:text-xl leading-relaxed italic mb-6"
-              style={{ fontFamily: 'Poppins, sans-serif' }}
+        {/* Row 1 - 4 logos */}
+        <div
+          ref={gridRef}
+          className={`reveal-slide-top reveal-delay-2 ${gridVisible ? 'revealed' : ''}`}
+        >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-5">
+            {clientLogos.slice(0, 4).map((client, i) => (
+              <div
+                key={i}
+                className="bg-white rounded-[20px] p-4 flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                style={{ borderTop: '4px solid #45a3c5', minHeight: '100px' }}
+              >
+                <img
+                  src={client.img}
+                  alt={client.name}
+                  className="max-w-[140px] max-h-[70px] object-contain"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Row 2 - 4 logos */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-5">
+            {clientLogos.slice(4, 8).map((client, i) => (
+              <div
+                key={i}
+                className="bg-white rounded-[20px] p-4 flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                style={{ borderTop: '4px solid #45a3c5', minHeight: '100px' }}
+              >
+                <img
+                  src={client.img}
+                  alt={client.name}
+                  className="max-w-[140px] max-h-[70px] object-contain"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Row 3 - 4 logos */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+            {clientLogos.slice(8, 12).map((client, i) => (
+              <div
+                key={i}
+                className="bg-white rounded-[20px] p-4 flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                style={{ borderTop: '4px solid #45a3c5', minHeight: '100px' }}
+              >
+                <img
+                  src={client.img}
+                  alt={client.name}
+                  className="max-w-[140px] max-h-[70px] object-contain"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* More link */}
+          <div className="text-right mt-4">
+            <a
+              href="#clients"
+              className="text-[#222] text-sm hover:text-[#45a3c5] transition-colors duration-300"
             >
-              "{testimonials[currentTestimonial].quote}"
-            </p>
-            <p
-              className="text-[#4ecdc4] text-sm font-medium"
-              style={{ fontFamily: 'Poppins, sans-serif' }}
-            >
-              — {testimonials[currentTestimonial].author}
-            </p>
+              ...More
+            </a>
           </div>
         </div>
       </div>
-
-      {/* Navigation */}
-      <div className="flex items-center justify-center gap-6 mt-10">
-        <button
-          onClick={handlePrev}
-          className="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center text-gray-400 hover:border-[#4ecdc4] hover:text-[#4ecdc4] transition-all duration-300"
-        >
-          <ChevronLeft size={18} />
-        </button>
-        <div className="flex gap-2">
-          {testimonials.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrentTestimonial(i)}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                i === currentTestimonial ? 'bg-[#4ecdc4] w-6' : 'bg-gray-600'
-              }`}
-            />
-          ))}
-        </div>
-        <button
-          onClick={handleNext}
-          className="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center text-gray-400 hover:border-[#4ecdc4] hover:text-[#4ecdc4] transition-all duration-300"
-        >
-          <ChevronRight size={18} />
-        </button>
-      </div>
-    </div>
+    </section>
   );
 };
 
