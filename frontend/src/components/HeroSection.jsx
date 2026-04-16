@@ -2,8 +2,10 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { heroData, heroSlides } from '../data/mock';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
+import { useSectionActive } from './PagePiling';
 
 const HeroSection = () => {
+  const { isActive } = useSectionActive();
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, duration: 30 },
     [Autoplay({ delay: 5000, stopOnInteraction: false })]
@@ -22,13 +24,8 @@ const HeroSection = () => {
     return () => emblaApi.off('select', onSelect);
   }, [emblaApi, onSelect]);
 
-  const scrollTo = useCallback(
-    (index) => emblaApi && emblaApi.scrollTo(index),
-    [emblaApi]
-  );
-
   return (
-    <div className="relative w-full h-full overflow-hidden bg-[#0d1b1e]">
+    <div className={`relative w-full h-full overflow-hidden bg-[#0d1b1e] ${isActive ? 'section-active' : ''}`}>
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <iframe
@@ -51,10 +48,8 @@ const HeroSection = () => {
 
       {/* Established text */}
       <div className="absolute left-6 top-1/2 -translate-y-1/2 hidden lg:block z-10">
-        <div
-          className="text-gray-500 text-xs tracking-[0.3em]"
-          style={{ writingMode: 'vertical-lr', transform: 'rotate(180deg)', fontFamily: 'Poppins, sans-serif' }}
-        >
+        <div className="section-content delay-5 text-gray-500 text-xs tracking-[0.3em]"
+          style={{ writingMode: 'vertical-lr', transform: 'rotate(180deg)', fontFamily: 'Poppins, sans-serif' }}>
           {heroData.established}
         </div>
       </div>
@@ -67,41 +62,29 @@ const HeroSection = () => {
               <div className="max-w-[1200px] mx-auto px-6 lg:px-20 w-full">
                 <div className="max-w-3xl">
                   <h1
-                    className={`text-white text-4xl md:text-5xl lg:text-[3.5rem] font-light mb-6 leading-tight transition-all duration-700 ${
+                    className={`section-content delay-1 text-white text-4xl md:text-5xl lg:text-[3.5rem] font-light mb-6 leading-tight transition-all duration-700 ${
                       selectedIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                     }`}
                     style={{ fontFamily: "'Myriad Pro', Arial, sans-serif" }}
                   >
                     {slide.heading}
                   </h1>
-                  <h3
-                    className={`text-gray-300 text-[15px] mb-2 leading-relaxed transition-all duration-700 delay-100 ${
-                      selectedIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                    }`}
-                    style={{ fontFamily: 'Poppins, sans-serif' }}
-                  >
+                  <h3 className={`section-content delay-2 text-gray-300 text-[15px] mb-2 leading-relaxed transition-all duration-700 delay-100 ${
+                    selectedIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  }`} style={{ fontFamily: 'Poppins, sans-serif' }}>
                     {slide.subtitle}
                   </h3>
-                  <h3
-                    className={`text-gray-300 text-[15px] mb-10 transition-all duration-700 delay-200 ${
-                      selectedIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                    }`}
-                    style={{ fontFamily: 'Poppins, sans-serif' }}
-                  >
+                  <h3 className={`section-content delay-3 text-gray-300 text-[15px] mb-10 transition-all duration-700 delay-200 ${
+                    selectedIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  }`} style={{ fontFamily: 'Poppins, sans-serif' }}>
                     {slide.description}
                   </h3>
-                  <div className={`transition-all duration-700 delay-300 ${
+                  <div className={`section-content delay-4 transition-all duration-700 delay-300 ${
                     selectedIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
-                    <a
-                      href={heroData.ctaLink}
-                      className="inline-block text-white text-[11px] tracking-wide px-6 py-3 rounded-full transition-all duration-300 hover:shadow-lg"
-                      style={{
-                        backgroundColor: 'hsla(210, 20%, 10%, 0.7)',
-                        backdropFilter: 'blur(15px)',
-                        fontFamily: 'Poppins, sans-serif',
-                      }}
-                    >
+                    <a href={heroData.ctaLink}
+                      className="inline-block text-white text-[11px] tracking-wide px-6 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105"
+                      style={{ backgroundColor: 'hsla(210, 20%, 10%, 0.7)', backdropFilter: 'blur(15px)', fontFamily: 'Poppins, sans-serif' }}>
                       {heroData.ctaText}
                     </a>
                   </div>

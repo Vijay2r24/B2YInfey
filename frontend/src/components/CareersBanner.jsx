@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
+import { useSectionActive } from './PagePiling';
 
 const careerSlides = [
   { image: 'https://avccpalmdale.com/B2B/img/career-banner.png', title: '', subtitle: '' },
@@ -9,6 +10,7 @@ const careerSlides = [
 ];
 
 const CareersBanner = () => {
+  const { isActive } = useSectionActive();
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay({ delay: 5000, stopOnInteraction: true })]);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -25,16 +27,17 @@ const CareersBanner = () => {
   }, [emblaApi, onSelect]);
 
   return (
-    <div className="relative w-full h-full flex items-center bg-[#0d1b1e]">
+    <div className={`relative w-full h-full flex items-center bg-[#0d1b1e] ${isActive ? 'section-active' : ''}`}>
       <div className="absolute inset-0 opacity-10 bg-gradient-to-br from-gray-800 to-gray-900"></div>
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10 w-full">
         <div className="lg:w-[70%]">
-          <div className="overflow-hidden rounded-lg" ref={emblaRef}>
+          <div className="section-scale-in delay-1 overflow-hidden rounded-lg" ref={emblaRef}>
             <div className="flex">
               {careerSlides.map((slide, i) => (
                 <div key={i} className="flex-[0_0_100%] min-w-0">
                   <div className="relative">
-                    <img src={slide.image} alt={slide.title || 'Career at B2B'} className="w-full rounded-lg max-h-[380px] object-cover" loading="lazy" />
+                    <img src={slide.image} alt={slide.title || 'Career at B2B'}
+                      className="w-full rounded-lg max-h-[380px] object-cover" loading="lazy" />
                     {slide.title && (
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent rounded-lg flex flex-col justify-end p-8">
                         <h3 className="text-white text-2xl font-semibold mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>{slide.title}</h3>
@@ -47,16 +50,15 @@ const CareersBanner = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-4 mt-6">
-            <a href="#careers" className="inline-block px-8 py-3 rounded-full text-sm font-medium transition-all duration-300 hover:shadow-lg"
+          <div className="section-content delay-3 flex items-center gap-4 mt-6">
+            <a href="#careers" className="inline-block px-8 py-3 rounded-full text-sm font-medium transition-all duration-300 hover:shadow-lg hover:scale-105"
               style={{ background: 'linear-gradient(135deg, #c8a97e, #a08050)', color: '#fff', fontFamily: 'Poppins, sans-serif' }}>
               Explore Careers
             </a>
             <div className="flex gap-2">
               {careerSlides.map((_, i) => (
                 <button key={i} onClick={() => emblaApi && emblaApi.scrollTo(i)}
-                  className={`h-2 rounded-full transition-all duration-300 ${i === selectedIndex ? 'bg-[#c8a97e] w-8' : 'bg-gray-600 w-2'}`}
-                />
+                  className={`h-2 rounded-full transition-all duration-500 ${i === selectedIndex ? 'bg-[#c8a97e] w-8' : 'bg-gray-600 w-2'}`} />
               ))}
             </div>
           </div>

@@ -4,8 +4,11 @@ import useEmblaCarousel from 'embla-carousel-react';
 import AutoScroll from 'embla-carousel-auto-scroll';
 import Autoplay from 'embla-carousel-autoplay';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useSectionActive } from './PagePiling';
 
 const ClientsSection = () => {
+  const { isActive } = useSectionActive();
+
   const [logoRef, logoApi] = useEmblaCarousel(
     { loop: true, align: 'start', dragFree: true },
     [AutoScroll({ speed: 1, stopOnInteraction: false, stopOnFocusIn: false })]
@@ -33,21 +36,21 @@ const ClientsSection = () => {
   }, [testApi, onTestSelect]);
 
   return (
-    <div className="relative w-full h-full flex flex-col justify-center bg-[#f5f5f5] overflow-hidden" style={{ fontFamily: 'Poppins, sans-serif' }}>
+    <div className={`relative w-full h-full flex flex-col justify-center bg-[#f5f5f5] overflow-hidden ${isActive ? 'section-active' : ''}`}
+      style={{ fontFamily: 'Poppins, sans-serif' }}>
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10 w-full">
-        <h2 className="text-[#222] text-3xl md:text-4xl font-semibold mb-8" style={{ fontFamily: "'Libre Baskerville', serif" }}>
+        <h2 className="section-content delay-1 text-[#222] text-3xl md:text-4xl font-semibold mb-8"
+          style={{ fontFamily: "'Libre Baskerville', serif" }}>
           Clients & Testimonials
         </h2>
 
-        {/* Auto-scrolling Logo Carousel */}
-        <div className="overflow-hidden mb-3" ref={logoRef}>
+        {/* Logo Carousel */}
+        <div className="section-scale-in delay-2 overflow-hidden mb-3" ref={logoRef}>
           <div className="flex">
             {[...clientLogos, ...clientLogos].map((client, i) => (
               <div key={i} className="flex-[0_0_25%] md:flex-[0_0_25%] min-w-0 px-2.5">
-                <div
-                  className="bg-white rounded-[20px] p-4 flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
-                  style={{ borderTop: '4px solid #45a3c5', minHeight: '90px' }}
-                >
+                <div className="bg-white rounded-[20px] p-4 flex items-center justify-center shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                  style={{ borderTop: '4px solid #45a3c5', minHeight: '90px' }}>
                   <img src={client.img} alt={client.name} className="max-w-[130px] max-h-[60px] object-contain" loading="lazy" />
                 </div>
               </div>
@@ -55,12 +58,12 @@ const ClientsSection = () => {
           </div>
         </div>
 
-        <div className="text-right mb-6">
+        <div className="section-content delay-2 text-right mb-6">
           <a href="#clients" className="text-[#222] text-sm hover:text-[#45a3c5] transition-colors duration-300">...More</a>
         </div>
 
-        {/* Testimonials Carousel */}
-        <div className="overflow-hidden" ref={testRef}>
+        {/* Testimonials */}
+        <div className="section-fade-up delay-3 overflow-hidden" ref={testRef}>
           <div className="flex">
             {testimonials.map((item) => (
               <div key={item.id} className="flex-[0_0_100%] min-w-0 px-4">
@@ -78,18 +81,17 @@ const ClientsSection = () => {
           </div>
         </div>
 
-        <div className="flex items-center justify-center gap-4 mt-3">
-          <button onClick={testPrev} className="w-9 h-9 rounded-full border border-gray-300 flex items-center justify-center text-gray-400 hover:border-[#45a3c5] hover:text-[#45a3c5] transition-all duration-300">
+        <div className="section-content delay-4 flex items-center justify-center gap-4 mt-3">
+          <button onClick={testPrev} className="w-9 h-9 rounded-full border border-gray-300 flex items-center justify-center text-gray-400 hover:border-[#45a3c5] hover:text-[#45a3c5] transition-all duration-300 hover:scale-110">
             <ChevronLeft size={16} />
           </button>
           <div className="flex gap-2">
             {testimonials.map((_, i) => (
               <button key={i} onClick={() => testApi && testApi.scrollTo(i)}
-                className={`h-2 rounded-full transition-all duration-300 ${i === testIndex ? 'bg-[#45a3c5] w-8' : 'bg-gray-300 w-2'}`}
-              />
+                className={`h-2 rounded-full transition-all duration-500 ${i === testIndex ? 'bg-[#45a3c5] w-8' : 'bg-gray-300 w-2'}`} />
             ))}
           </div>
-          <button onClick={testNext} className="w-9 h-9 rounded-full border border-gray-300 flex items-center justify-center text-gray-400 hover:border-[#45a3c5] hover:text-[#45a3c5] transition-all duration-300">
+          <button onClick={testNext} className="w-9 h-9 rounded-full border border-gray-300 flex items-center justify-center text-gray-400 hover:border-[#45a3c5] hover:text-[#45a3c5] transition-all duration-300 hover:scale-110">
             <ChevronRight size={16} />
           </button>
         </div>

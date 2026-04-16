@@ -1,46 +1,68 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, createContext, useContext } from 'react';
+
+// Context so children know if they're active
+export const SectionContext = createContext({ isActive: false, direction: 'down' });
+export const useSectionActive = () => useContext(SectionContext);
 
 const PagePiling = ({ children }) => {
   const containerRef = useRef(null);
   const [currentSection, setCurrentSection] = useState(0);
+  const [prevSection, setPrevSection] = useState(-1);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [direction, setDirection] = useState('down');
   const totalSections = React.Children.count(children);
   const touchStartY = useRef(0);
-  const lastScrollTime = useRef(0);
+  const accumulatedDelta = useRef(0);
+  const wheelTimeout = useRef(null);
 
   const scrollToSection = useCallback(
     (index) => {
-      if (index < 0 || index >= totalSections || isAnimating) return;
+      if (index < 0 || index >= totalSections || isAnimating || index === currentSection) return;
       setIsAnimating(true);
+      setDirection(index > currentSection ? 'down' : 'up');
+      setPrevSection(currentSection);
       setCurrentSection(index);
-      setTimeout(() => setIsAnimating(false), 1000);
+      accumulatedDelta.current = 0;
+
+      // Allow next scroll after transition
+      setTimeout(() => {
+        setIsAnimating(false);
+      }, 1200);
     },
-    [totalSections, isAnimating]
+    [totalSections, isAnimating, currentSection]
   );
 
-  // Mouse wheel handler
+  // Smooth wheel with accumulated delta
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
     const handleWheel = (e) => {
       e.preventDefault();
-      const now = Date.now();
-      if (now - lastScrollTime.current < 1000) return;
-      lastScrollTime.current = now;
+      if (isAnimating) return;
 
-      if (e.deltaY > 0) {
-        scrollToSection(currentSection + 1);
-      } else if (e.deltaY < 0) {
-        scrollToSection(currentSection - 1);
+      accumulatedDelta.current += e.deltaY;
+
+      if (wheelTimeout.current) clearTimeout(wheelTimeout.current);
+      wheelTimeout.current = setTimeout(() => {
+        accumulatedDelta.current = 0;
+      }, 200);
+
+      if (Math.abs(accumulatedDelta.current) > 80) {
+        if (accumulatedDelta.current > 0) {
+          scrollToSection(currentSection + 1);
+        } else {
+          scrollToSection(currentSection - 1);
+        }
+        accumulatedDelta.current = 0;
       }
     };
 
     container.addEventListener('wheel', handleWheel, { passive: false });
     return () => container.removeEventListener('wheel', handleWheel);
-  }, [currentSection, scrollToSection]);
+  }, [currentSection, scrollToSection, isAnimating]);
 
-  // Touch handlers
+  // Touch
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
@@ -48,19 +70,11 @@ const PagePiling = ({ children }) => {
     const handleTouchStart = (e) => {
       touchStartY.current = e.touches[0].clientY;
     };
-
     const handleTouchEnd = (e) => {
-      const now = Date.now();
-      if (now - lastScrollTime.current < 1000) return;
-      lastScrollTime.current = now;
-
+      if (isAnimating) return;
       const delta = touchStartY.current - e.changedTouches[0].clientY;
-      if (Math.abs(delta) > 50) {
-        if (delta > 0) {
-          scrollToSection(currentSection + 1);
-        } else {
-          scrollToSection(currentSection - 1);
-        }
+      if (Math.abs(delta) > 60) {
+        scrollToSection(delta > 0 ? currentSection + 1 : currentSection - 1);
       }
     };
 
@@ -70,77 +84,86 @@ const PagePiling = ({ children }) => {
       container.removeEventListener('touchstart', handleTouchStart);
       container.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [currentSection, scrollToSection]);
+  }, [currentSection, scrollToSection, isAnimating]);
 
-  // Keyboard handler
+  // Keyboard
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+      if (['ArrowDown', 'PageDown', ' '].includes(e.key)) {
         e.preventDefault();
         scrollToSection(currentSection + 1);
-      } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      } else if (['ArrowUp', 'PageUp'].includes(e.key)) {
         e.preventDefault();
         scrollToSection(currentSection - 1);
-      } else if (e.key === 'Home') {
-        e.preventDefault();
-        scrollToSection(0);
-      } else if (e.key === 'End') {
-        e.preventDefault();
-        scrollToSection(totalSections - 1);
       }
     };
-
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentSection, scrollToSection, totalSections]);
+  }, [currentSection, scrollToSection]);
 
   return (
-    <div
-      ref={containerRef}
-      className="fixed inset-0 overflow-hidden"
-      style={{ touchAction: 'none' }}
-    >
-      {/* Sections container */}
-      <div
-        className="transition-transform duration-[1000ms] ease-[cubic-bezier(0.77,0,0.175,1)]"
-        style={{
-          transform: `translateY(-${currentSection * 100}vh)`,
-          height: `${totalSections * 100}vh`,
-        }}
-      >
-        {React.Children.map(children, (child, index) => (
-          <div
-            key={index}
-            className="h-screen w-full relative overflow-hidden"
-          >
+    <div ref={containerRef} className="pp-container" style={{ touchAction: 'none' }}>
+      {React.Children.map(children, (child, index) => {
+        const isActive = currentSection === index;
+        const isPrev = prevSection === index;
+        const isBelow = index > currentSection;
+        const isAbove = index < currentSection;
+
+        // Calculate transform for stacked parallax effect
+        let transform = 'translateY(0)';
+        let zIndex = 1;
+        let opacity = 0;
+
+        if (isActive) {
+          transform = 'translateY(0)';
+          zIndex = 10;
+          opacity = 1;
+        } else if (isPrev && isAnimating) {
+          // Outgoing section shifts slightly with parallax
+          transform = direction === 'down'
+            ? 'translateY(-30vh) scale(0.95)'
+            : 'translateY(30vh) scale(0.95)';
+          zIndex = 5;
+          opacity = 0.3;
+        } else if (isBelow) {
+          transform = 'translateY(100vh)';
+          zIndex = 1;
+          opacity = 0;
+        } else if (isAbove) {
+          transform = 'translateY(-100vh)';
+          zIndex = 1;
+          opacity = 0;
+        }
+
+        return (
+          <SectionContext.Provider value={{ isActive, direction }}>
             <div
-              className={`w-full h-full transition-all duration-[800ms] ease-[cubic-bezier(0.77,0,0.175,1)] ${
-                currentSection === index
-                  ? 'opacity-100 translate-y-0 scale-100'
-                  : Math.abs(currentSection - index) === 1
-                  ? 'opacity-70 translate-y-0 scale-[0.98]'
-                  : 'opacity-0 translate-y-8'
-              }`}
-              style={{ transitionDelay: currentSection === index ? '200ms' : '0ms' }}
+              key={index}
+              className="pp-section"
+              style={{
+                transform,
+                zIndex,
+                opacity: isActive || (isPrev && isAnimating) ? opacity : 0,
+                transition: isAnimating
+                  ? 'transform 1s cubic-bezier(0.645, 0.045, 0.355, 1), opacity 0.8s ease'
+                  : 'none',
+                visibility: isActive || (isPrev && isAnimating) ? 'visible' : 'hidden',
+              }}
             >
               {child}
             </div>
-          </div>
-        ))}
-      </div>
+          </SectionContext.Provider>
+        );
+      })}
 
       {/* Side dot navigation */}
-      <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-3">
+      <div className="pp-dots">
         {Array.from({ length: totalSections }).map((_, i) => (
           <button
             key={i}
             onClick={() => scrollToSection(i)}
-            className={`w-3 h-3 rounded-full transition-all duration-500 border ${
-              i === currentSection
-                ? 'border-[#c8a97e] bg-transparent scale-125 shadow-[0_0_8px_rgba(200,169,126,0.4)]'
-                : 'border-gray-500 bg-gray-500/50 hover:border-gray-300 hover:scale-110'
-            }`}
-            aria-label={`Go to section ${i + 1}`}
+            className={`pp-dot ${i === currentSection ? 'pp-dot-active' : ''}`}
+            aria-label={`Section ${i + 1}`}
           />
         ))}
       </div>
