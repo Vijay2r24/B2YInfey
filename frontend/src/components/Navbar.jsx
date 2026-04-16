@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { navItems, sideMenuItems } from '../data/mock';
-import { ChevronDown, X } from 'lucide-react';
+import { sideMenuItems } from '../data/mock';
+import { ChevronDown, X, Menu } from 'lucide-react';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full z-50 bg-[#2d2d2d]/80 backdrop-blur-md" style={{ fontFamily: 'Poppins, sans-serif' }}>
+      <header className="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-500 backdrop-blur-md" style={{ fontFamily: 'Poppins, sans-serif' }}>
         <div className="max-w-[1400px] mx-auto flex items-center justify-between px-6 py-4">
           {/* Logo */}
           <a href="#home" className="flex-shrink-0">
@@ -23,28 +23,13 @@ const Navbar = () => {
             />
           </a>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-white text-sm font-medium hover:text-[#00bcd4] transition-colors duration-300 relative group"
-              >
-                {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00bcd4] group-hover:w-full transition-all duration-300"></span>
-              </a>
-            ))}
-          </nav>
-
-          {/* Mobile Hamburger */}
+          {/* Hamburger Icon - Visible on all screen sizes */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden relative z-[60] w-10 h-10 flex flex-col items-center justify-center gap-1.5"
+            className="relative z-[60] text-white hover:text-cyan-200 transition-colors duration-300"
+            aria-label="Toggle menu"
           >
-            <span className={`block w-7 h-0.5 bg-white transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-            <span className={`block w-7 h-0.5 bg-white transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
-            <span className={`block w-7 h-0.5 bg-white transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+            <Menu size={28} strokeWidth={2} />
           </button>
         </div>
       </header>
