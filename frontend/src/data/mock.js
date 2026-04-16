@@ -1,12 +1,11 @@
 // Mock data for B2B Software Technologies Ltd homepage
 
 export const navItems = [
-  { label: 'ERP', href: '#erp' },
-  { label: 'Emerging Technologies', href: '#emerging' },
-  { label: 'Healthcare', href: '#healthcare' },
-  { label: 'Industries', href: '#industries' },
-  { label: 'Careers', href: '#careers' },
-  { label: 'Investors', href: '#investors' },
+  { label: 'Home', href: '#home' },
+  { label: 'About', href: '#about' },
+  { label: 'Services', href: '#products' },
+  { label: 'Portfolio', href: '#clients' },
+  { label: 'Contact', href: '#contact' },
 ];
 
 export const sideMenuItems = [
