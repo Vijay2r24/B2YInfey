@@ -15,7 +15,7 @@ import PagePiling from './components/PagePiling';
 const HomePage = () => {
   return (
     <AnimsitionOverlay>
-      <div className="bg-[#0d1b1e]">
+      <div className="bg-[#0a0a2e]">
         <Navbar />
         <PagePiling>
           <HeroSection />

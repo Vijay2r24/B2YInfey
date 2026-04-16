@@ -21,7 +21,7 @@ const Counter = ({ target, duration = 2000, active }) => {
 
   return (
     <span className="text-7xl md:text-8xl lg:text-[120px] font-bold leading-none" style={{
-      background: 'linear-gradient(135deg, #4ecdc4, #44a08d)',
+      background: 'linear-gradient(135deg, #3b6bb5, #00d4ff)',
       WebkitBackgroundClip: 'text',
       WebkitTextFillColor: 'transparent',
       fontFamily: 'Poppins, sans-serif',
@@ -36,12 +36,10 @@ const AboutSection = () => {
 
   return (
     <div className={`relative w-full h-full flex items-center bg-[#f5f5f5] overflow-hidden ${isActive ? 'section-active' : ''}`}>
-      {/* Circle bg */}
-      <div className="absolute -right-40 top-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-gray-300/30 opacity-20"></div>
+      <div className="absolute -right-40 top-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-[#00d4ff]/10 opacity-30"></div>
 
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10 w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Counter */}
           <div className="section-slide-left delay-1 flex flex-col items-center lg:items-start">
             <Counter target={aboutData.yearsCount} active={isActive} />
             <div className="flex flex-col items-center lg:items-start mt-2">
@@ -54,9 +52,13 @@ const AboutSection = () => {
             </div>
           </div>
 
-          {/* Content */}
           <div className="section-slide-right delay-2">
-            <h3 className="section-fade-up delay-2 text-[#4ecdc4] text-xl md:text-2xl font-bold mb-6 leading-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h3 className="section-fade-up delay-2 text-xl md:text-2xl font-bold mb-6 leading-tight" style={{
+              fontFamily: 'Poppins, sans-serif',
+              background: 'linear-gradient(135deg, #2a2a7a, #00d4ff)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}>
               {aboutData.heading}
             </h3>
             <p className="section-fade-up delay-3 text-[#555] text-sm leading-relaxed mb-5" style={{ fontFamily: 'Poppins, sans-serif' }}>

@@ -25,7 +25,7 @@ const HeroSection = () => {
   }, [emblaApi, onSelect]);
 
   return (
-    <div className={`relative w-full h-full overflow-hidden bg-[#0d1b1e] ${isActive ? 'section-active' : ''}`}>
+    <div className={`relative w-full h-full overflow-hidden bg-[#0a0a2e] ${isActive ? 'section-active' : ''}`}>
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <iframe
@@ -33,7 +33,7 @@ const HeroSection = () => {
           className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2"
           style={{
             opacity: 0.9,
-            backgroundColor: 'hsla(210, 20%, 10%, 0.7)',
+            backgroundColor: 'hsla(240, 40%, 8%, 0.7)',
             backdropFilter: 'blur(15px)',
             filter: 'contrast(0.9)',
             border: 'none',
@@ -42,7 +42,7 @@ const HeroSection = () => {
           }}
           allow="autoplay; fullscreen"
           allowFullScreen
-          title="B2B Background Video"
+          title="B2Y Background Video"
         />
       </div>
 
@@ -83,8 +83,8 @@ const HeroSection = () => {
                     selectedIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
                     <a href={heroData.ctaLink}
-                      className="inline-block text-white text-[11px] tracking-wide px-6 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105"
-                      style={{ backgroundColor: 'hsla(210, 20%, 10%, 0.7)', backdropFilter: 'blur(15px)', fontFamily: 'Poppins, sans-serif' }}>
+                      className="inline-block text-white text-[11px] tracking-wide px-6 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 hover:shadow-[#00d4ff]/20"
+                      style={{ backgroundColor: 'hsla(240, 40%, 8%, 0.7)', backdropFilter: 'blur(15px)', fontFamily: 'Poppins, sans-serif' }}>
                       {heroData.ctaText}
                     </a>
                   </div>

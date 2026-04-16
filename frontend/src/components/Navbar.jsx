@@ -12,13 +12,13 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full z-50 bg-[#0d1b1e]/90 backdrop-blur-sm" style={{ fontFamily: 'Poppins, sans-serif' }}>
+      <header className="fixed top-0 left-0 w-full z-50 bg-[#0a0a2e]/90 backdrop-blur-sm" style={{ fontFamily: 'Poppins, sans-serif' }}>
         <div className="max-w-[1400px] mx-auto flex items-center justify-between px-6 py-4">
           {/* Logo */}
           <a href="#" className="flex-shrink-0">
             <img
-              src="https://avccpalmdale.com/B2B/images/B2B_Logo_White.png"
-              alt="B2B Software Technologies"
+              src="https://customer-assets.emergentagent.com/job_b2b-react-preview/artifacts/3hqwqfxw_logoPinkTransperant.c6af2d1c926f2e4ba7f1%20%281%29.png"
+              alt="B2Y Infy"
               className="h-12 md:h-14 w-auto"
             />
           </a>
@@ -28,7 +28,7 @@ const Navbar = () => {
             className="hidden lg:flex items-center gap-0 rounded-full px-6 py-3"
             style={{
               backdropFilter: 'blur(15px)',
-              backgroundColor: 'hsla(210, 20%, 10%, 0.7)',
+              backgroundColor: 'hsla(240, 40%, 8%, 0.7)',
               filter: 'contrast(0.958)',
             }}
           >
@@ -85,9 +85,9 @@ const Navbar = () => {
           menuOpen ? 'visible opacity-100' : 'invisible opacity-0'
         }`}
       >
-        <div className="absolute inset-0 bg-[#0d1b1e]/95 backdrop-blur-md" onClick={() => setMenuOpen(false)} />
+        <div className="absolute inset-0 bg-[#0a0a2e]/95 backdrop-blur-md" onClick={() => setMenuOpen(false)} />
         <div
-          className={`absolute right-0 top-0 h-full w-full md:w-[450px] bg-[#0d1b1e] overflow-y-auto transition-transform duration-500 ${
+          className={`absolute right-0 top-0 h-full w-full md:w-[450px] bg-[#0a0a2e] overflow-y-auto transition-transform duration-500 ${
             menuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
           style={{ fontFamily: 'Poppins, sans-serif' }}
@@ -100,7 +100,7 @@ const Navbar = () => {
                     <div>
                       <button
                         onClick={() => toggleExpand(item.label)}
-                        className="flex items-center justify-between w-full text-white text-lg py-3 border-b border-gray-800/30 hover:text-[#c8a97e] transition-colors duration-300"
+                        className="flex items-center justify-between w-full text-white text-lg py-3 border-b border-gray-800/30 hover:text-[#00d4ff] transition-colors duration-300"
                       >
                         <span>{item.label}</span>
                         <ChevronDown
@@ -120,7 +120,7 @@ const Navbar = () => {
                             <li key={child.label}>
                               <a
                                 href={child.href}
-                                className="block text-gray-400 text-sm py-2 hover:text-[#c8a97e] transition-colors duration-300"
+                                className="block text-gray-400 text-sm py-2 hover:text-[#00d4ff] transition-colors duration-300"
                                 onClick={() => setMenuOpen(false)}
                               >
                                 {child.label}
@@ -134,7 +134,7 @@ const Navbar = () => {
                     <a
                       href={item.href || '#'}
                       className={`block text-lg py-3 border-b border-gray-800/30 transition-colors duration-300 ${
-                        item.active ? 'text-[#c8a97e]' : 'text-white hover:text-[#c8a97e]'
+                        item.active ? 'text-[#00d4ff]' : 'text-white hover:text-[#00d4ff]'
                       }`}
                       onClick={() => setMenuOpen(false)}
                     >

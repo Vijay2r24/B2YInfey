@@ -6,25 +6,23 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useSectionActive } from './PagePiling';
 
 const ProductCard = ({ product, index }) => (
-  <article
-    className="group rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl h-full"
-    style={{ transitionDelay: `${index * 80}ms` }}
-  >
+  <article className="group rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl h-full"
+    style={{ transitionDelay: `${index * 80}ms` }}>
     <div className="h-full rounded-2xl p-6 md:p-8 flex flex-col transition-all duration-500"
       style={{
         borderTop: `8px solid ${product.borderColor}`,
-        backgroundColor: 'rgba(18, 18, 18, 0.7)',
+        backgroundColor: 'rgba(15, 15, 50, 0.7)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
       }}>
       <h3 className="text-white text-[17px] font-medium mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
-        <a href={product.link} className="hover:text-gray-300 transition-colors duration-300">{product.title}</a>
+        <a href={product.link} className="hover:text-[#00d4ff] transition-colors duration-300">{product.title}</a>
       </h3>
       <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-1" style={{ fontFamily: 'Poppins, sans-serif' }}>
         {product.description}
       </p>
       <a href={product.link}
-        className="text-gray-300 text-[15px] hover:text-white transition-colors duration-300 group-hover:translate-x-1 inline-flex items-center gap-1"
+        className="text-[#00d4ff] text-[15px] hover:text-white transition-colors duration-300 group-hover:translate-x-1 inline-flex items-center gap-1"
         style={{ fontFamily: 'Poppins, sans-serif' }}>
         Read More
         <ChevronRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -61,7 +59,7 @@ const ProductsSection = () => {
 
   return (
     <div className={`relative w-full h-full flex items-center py-10 ${isActive ? 'section-active' : ''}`}
-      style={{ background: 'linear-gradient(to top, #24243e, #302b63, #0f0c29)' }}>
+      style={{ background: 'linear-gradient(to top, #0a0a2e, #1a1a5e, #0f0c29)' }}>
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10 w-full">
         <div className="section-content delay-1 mb-8 flex items-center justify-between">
           <p className="text-gray-300 text-sm tracking-wider" style={{ fontFamily: 'Poppins, sans-serif' }}>
@@ -69,11 +67,11 @@ const ProductsSection = () => {
           </p>
           <div className="flex items-center gap-2">
             <button onClick={scrollPrev}
-              className="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center text-gray-400 hover:border-[#c8a97e] hover:text-[#c8a97e] transition-all duration-300 hover:scale-110">
+              className="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center text-gray-400 hover:border-[#00d4ff] hover:text-[#00d4ff] transition-all duration-300 hover:scale-110">
               <ChevronLeft size={18} />
             </button>
             <button onClick={scrollNext}
-              className="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center text-gray-400 hover:border-[#c8a97e] hover:text-[#c8a97e] transition-all duration-300 hover:scale-110">
+              className="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center text-gray-400 hover:border-[#00d4ff] hover:text-[#00d4ff] transition-all duration-300 hover:scale-110">
               <ChevronRight size={18} />
             </button>
           </div>
@@ -93,7 +91,7 @@ const ProductsSection = () => {
           {scrollSnaps.map((_, i) => (
             <button key={i} onClick={() => scrollTo(i)}
               className={`h-2 rounded-full transition-all duration-500 ${
-                i === selectedIndex ? 'bg-[#c8a97e] w-8' : 'bg-gray-600 w-2 hover:bg-gray-400'
+                i === selectedIndex ? 'bg-[#00d4ff] w-8' : 'bg-gray-600 w-2 hover:bg-gray-400'
               }`} />
           ))}
         </div>

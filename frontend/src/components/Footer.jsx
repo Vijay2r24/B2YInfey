@@ -12,7 +12,12 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 gap-12 items-start">
           <div className="section-slide-left delay-1">
             <h2 className="text-2xl md:text-3xl font-semibold mb-6"
-              style={{ color: '#4ecdc4', fontFamily: "'Libre Baskerville', serif" }}>
+              style={{
+                fontFamily: "'Libre Baskerville', serif",
+                background: 'linear-gradient(135deg, #2a2a7a, #00d4ff)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}>
               {footerData.companyName}
             </h2>
             <div className="section-fade-up delay-2 mb-6">
@@ -22,11 +27,11 @@ const Footer = () => {
             </div>
             <div className="section-fade-up delay-3">
               <a href={`mailto:${footerData.email}`}
-                className="text-[#333] text-lg underline hover:text-[#4ecdc4] transition-colors duration-300 block mb-2">
+                className="text-[#333] text-lg underline hover:text-[#00bcd4] transition-colors duration-300 block mb-2">
                 {footerData.email}
               </a>
               <a href={`tel:${footerData.phone}`}
-                className="text-[#333] text-lg hover:text-[#4ecdc4] transition-colors duration-300 block">
+                className="text-[#333] text-lg hover:text-[#00bcd4] transition-colors duration-300 block">
                 {footerData.phone}
               </a>
             </div>
@@ -44,8 +49,8 @@ const Footer = () => {
 
         <div className="section-content delay-4 mt-8">
           <a href="#contact"
-            className="inline-block px-8 py-3 rounded-full text-sm font-medium text-white transition-all duration-300 hover:shadow-lg hover:scale-105"
-            style={{ background: '#4ecdc4' }}>
+            className="inline-block px-8 py-3 rounded-full text-sm font-medium text-white transition-all duration-300 hover:shadow-lg hover:scale-105 hover:shadow-[#00bcd4]/30"
+            style={{ background: 'linear-gradient(135deg, #00bcd4, #00d4ff)' }}>
             Contact us
           </a>
         </div>
