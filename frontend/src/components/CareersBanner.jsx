@@ -1,9 +1,12 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import useScrollReveal from '../hooks/useScrollReveal';
 
 const CareersBanner = () => {
+  const [ref, isVisible] = useScrollReveal({ threshold: 0.2 });
+
   return (
-    <section className="relative overflow-hidden">
+    <section id="careers" className="relative overflow-hidden">
       {/* Background */}
       <div className="relative h-[400px] md:h-[450px]">
         <div className="absolute inset-0 bg-gradient-to-r from-[#0d1b1e] via-[#142e2e] to-[#0d1b1e]"></div>
@@ -16,7 +19,10 @@ const CareersBanner = () => {
 
         {/* Content */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center px-6">
+          <div
+            ref={ref}
+            className={`text-center px-6 reveal-slide-top ${isVisible ? 'revealed' : ''}`}
+          >
             <h2
               className="text-white text-3xl md:text-4xl lg:text-5xl font-semibold mb-6"
               style={{ fontFamily: 'Poppins, sans-serif' }}

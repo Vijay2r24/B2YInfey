@@ -1,6 +1,7 @@
 import React from 'react';
 import { products } from '../data/mock';
 import { Beaker, Settings, ShieldCheck, Users, Heart, Cpu } from 'lucide-react';
+import useScrollReveal from '../hooks/useScrollReveal';
 
 const iconMap = {
   Flask: Beaker,
@@ -59,10 +60,16 @@ const ProductCard = ({ product, index }) => {
 };
 
 const ProductsSection = () => {
+  const [titleRef, titleVisible] = useScrollReveal({ threshold: 0.2 });
+  const [gridRef, gridVisible] = useScrollReveal({ threshold: 0.1 });
+
   return (
-    <section className="relative bg-[#0a1517] py-20 lg:py-32">
+    <section id="products" className="relative bg-[#0a1517] py-20 lg:py-32">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-20">
-        <div className="mb-16">
+        <div
+          ref={titleRef}
+          className={`mb-16 reveal-slide-top ${titleVisible ? 'revealed' : ''}`}
+        >
           <p
             className="text-[#4ecdc4] text-sm tracking-[0.2em] uppercase mb-4"
             style={{ fontFamily: 'Poppins, sans-serif' }}
@@ -72,7 +79,10 @@ const ProductsSection = () => {
           <div className="w-16 h-0.5 bg-[#4ecdc4]/40"></div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div
+          ref={gridRef}
+          className={`grid md:grid-cols-2 lg:grid-cols-3 gap-8 reveal-slide-top reveal-delay-2 ${gridVisible ? 'revealed' : ''}`}
+        >
           {products.map((product, index) => (
             <ProductCard key={product.id} product={product} index={index} />
           ))}

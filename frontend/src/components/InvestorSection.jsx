@@ -1,14 +1,21 @@
 import React from 'react';
 import { investorData } from '../data/mock';
 import { ArrowRight, FileText, TrendingUp } from 'lucide-react';
+import useScrollReveal from '../hooks/useScrollReveal';
 
 const InvestorSection = () => {
+  const [imageRef, imageVisible] = useScrollReveal({ threshold: 0.2 });
+  const [contentRef, contentVisible] = useScrollReveal({ threshold: 0.2 });
+
   return (
-    <section className="relative bg-[#0a1517] py-20 lg:py-28">
+    <section id="investors" className="relative bg-[#0a1517] py-20 lg:py-28">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left - Image */}
-          <div className="relative group">
+          <div
+            ref={imageRef}
+            className={`relative group reveal-slide-top ${imageVisible ? 'revealed' : ''}`}
+          >
             <div className="overflow-hidden rounded-lg">
               <img
                 src={investorData.graphImage}
@@ -28,7 +35,10 @@ const InvestorSection = () => {
           </div>
 
           {/* Right - Content */}
-          <div>
+          <div
+            ref={contentRef}
+            className={`reveal-slide-top reveal-delay-2 ${contentVisible ? 'revealed' : ''}`}
+          >
             <div className="flex items-center gap-3 mb-6">
               <TrendingUp className="w-6 h-6 text-[#4ecdc4]" />
               <h3

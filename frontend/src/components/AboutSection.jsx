@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { aboutData } from '../data/mock';
+import useScrollReveal from '../hooks/useScrollReveal';
 
 const Counter = ({ target, duration = 2000 }) => {
   const [count, setCount] = useState(0);
@@ -43,15 +44,21 @@ const Counter = ({ target, duration = 2000 }) => {
 };
 
 const AboutSection = () => {
+  const [counterRef, counterVisible] = useScrollReveal({ threshold: 0.2 });
+  const [contentRef, contentVisible] = useScrollReveal({ threshold: 0.2 });
+
   return (
-    <section className="relative bg-[#0d1b1e] py-20 lg:py-32 overflow-hidden">
+    <section id="about" className="relative bg-[#0d1b1e] py-20 lg:py-32 overflow-hidden">
       {/* Decorative gradient */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#4ecdc4]/20 to-transparent"></div>
 
       <div className="max-w-[1400px] mx-auto px-6 lg:px-20">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left - Counter */}
-          <div className="flex flex-col items-center lg:items-start">
+          <div
+            ref={counterRef}
+            className={`flex flex-col items-center lg:items-start reveal-slide-top ${counterVisible ? 'revealed' : ''}`}
+          >
             <Counter target={aboutData.yearsCount} />
             <div className="flex flex-col items-center lg:items-start mt-4">
               <span className="text-white text-2xl font-light tracking-wider" style={{ fontFamily: 'Poppins, sans-serif' }}>
@@ -64,7 +71,10 @@ const AboutSection = () => {
           </div>
 
           {/* Right - Content */}
-          <div>
+          <div
+            ref={contentRef}
+            className={`reveal-slide-top reveal-delay-2 ${contentVisible ? 'revealed' : ''}`}
+          >
             <h2
               className="text-white text-2xl md:text-3xl lg:text-4xl font-semibold mb-8 leading-tight"
               style={{ fontFamily: 'Poppins, sans-serif' }}

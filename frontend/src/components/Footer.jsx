@@ -1,11 +1,17 @@
 import React from 'react';
 import { footerData } from '../data/mock';
 import { Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
+import useScrollReveal from '../hooks/useScrollReveal';
 
 const Footer = () => {
+  const [ref, isVisible] = useScrollReveal({ threshold: 0.1 });
+
   return (
-    <footer className="bg-[#0d1b1e] border-t border-[#1a3535]">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-20 py-16">
+    <footer id="contact" className="bg-[#0d1b1e] border-t border-[#1a3535]">
+      <div
+        ref={ref}
+        className={`max-w-[1400px] mx-auto px-6 lg:px-20 py-16 reveal-slide-top ${isVisible ? 'revealed' : ''}`}
+      >
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
           {/* Company Info */}
           <div>

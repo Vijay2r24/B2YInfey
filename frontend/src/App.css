@@ -32,7 +32,142 @@ body {
   animation: fadeIn 0.6s ease-out forwards;
 }
 
-/* Scrollbar styling */
+/* ========= ANIMSITION OVERLAY SLIDE TOP ========= */
+.animsition-overlay-slide {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background-color: #0d1b1e;
+  pointer-events: none;
+}
+
+.animsition-overlay-visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+.animsition-overlay-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.animsition-overlay-slide-in-top {
+  animation: overlaySlideInTop 1.5s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+.animsition-overlay-slide-out-top {
+  animation: overlaySlideOutTop 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  pointer-events: all;
+}
+
+@keyframes overlaySlideInTop {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes overlaySlideOutTop {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Animsition Loading Spinner */
+.animsition-loading-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.animsition-spinner {
+  display: flex;
+  gap: 6px;
+}
+
+.animsition-bounce1,
+.animsition-bounce2,
+.animsition-bounce3 {
+  width: 12px;
+  height: 12px;
+  background-color: #4ecdc4;
+  border-radius: 50%;
+  animation: animsitionBounce 1.4s infinite ease-in-out both;
+}
+
+.animsition-bounce1 {
+  animation-delay: -0.32s;
+}
+
+.animsition-bounce2 {
+  animation-delay: -0.16s;
+}
+
+@keyframes animsitionBounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+/* ========= SCROLL REVEAL ANIMATIONS (Slide-Top style) ========= */
+.reveal-slide-top {
+  opacity: 0;
+  transform: translateY(-60px);
+  transition: opacity 0.8s cubic-bezier(0.77, 0, 0.175, 1),
+              transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.reveal-slide-top.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-slide-bottom {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.8s cubic-bezier(0.77, 0, 0.175, 1),
+              transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.reveal-slide-bottom.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-fade {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.reveal-fade.revealed {
+  opacity: 1;
+}
+
+/* Stagger delays for child elements */
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+.reveal-delay-6 { transition-delay: 0.6s; }
+
+/* ========= Scrollbar styling ========= */
 ::-webkit-scrollbar {
   width: 6px;
 }

@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { heroData } from '../data/mock';
+import useScrollReveal from '../hooks/useScrollReveal';
 
 const HeroSection = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const totalSlides = 5;
+  const [headingRef, headingVisible] = useScrollReveal({ threshold: 0.1 });
+  const [subtitleRef, subtitleVisible] = useScrollReveal({ threshold: 0.1 });
+  const [ctaRef, ctaVisible] = useScrollReveal({ threshold: 0.1 });
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -40,34 +44,49 @@ const HeroSection = () => {
       {/* Main Content */}
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-20 pt-32 pb-20 w-full">
         <div className="max-w-3xl">
-          <h1
-            className="text-white text-4xl md:text-5xl lg:text-6xl font-light mb-8 leading-tight"
-            style={{ fontFamily: 'Poppins, sans-serif' }}
+          <div
+            ref={headingRef}
+            className={`reveal-slide-top ${headingVisible ? 'revealed' : ''}`}
           >
-            {heroData.heading}
-          </h1>
+            <h1
+              className="text-white text-4xl md:text-5xl lg:text-6xl font-light mb-8 leading-tight"
+              style={{ fontFamily: 'Poppins, sans-serif' }}
+            >
+              {heroData.heading}
+            </h1>
+          </div>
 
-          <p
-            className="text-gray-400 text-xs md:text-sm tracking-[0.15em] uppercase mb-4 max-w-2xl"
-            style={{ fontFamily: 'Poppins, sans-serif' }}
+          <div
+            ref={subtitleRef}
+            className={`reveal-slide-top reveal-delay-2 ${subtitleVisible ? 'revealed' : ''}`}
           >
-            {heroData.subtitle}
-          </p>
+            <p
+              className="text-gray-400 text-xs md:text-sm tracking-[0.15em] uppercase mb-4 max-w-2xl"
+              style={{ fontFamily: 'Poppins, sans-serif' }}
+            >
+              {heroData.subtitle}
+            </p>
 
-          <p
-            className="text-gray-300 text-sm md:text-base mb-10 max-w-2xl font-light"
-            style={{ fontFamily: 'Poppins, sans-serif' }}
-          >
-            {heroData.description}
-          </p>
+            <p
+              className="text-gray-300 text-sm md:text-base mb-10 max-w-2xl font-light"
+              style={{ fontFamily: 'Poppins, sans-serif' }}
+            >
+              {heroData.description}
+            </p>
+          </div>
 
-          <a
-            href={heroData.ctaLink}
-            className="inline-block bg-[#2a2a2a] hover:bg-[#3a3a3a] text-white text-xs tracking-[0.15em] uppercase px-8 py-4 rounded transition-all duration-300 hover:shadow-lg hover:shadow-[#4ecdc4]/10"
-            style={{ fontFamily: 'Poppins, sans-serif' }}
+          <div
+            ref={ctaRef}
+            className={`reveal-slide-top reveal-delay-4 ${ctaVisible ? 'revealed' : ''}`}
           >
-            {heroData.ctaText}
-          </a>
+            <a
+              href={heroData.ctaLink}
+              className="inline-block bg-[#2a2a2a] hover:bg-[#3a3a3a] text-white text-xs tracking-[0.15em] uppercase px-8 py-4 rounded transition-all duration-300 hover:shadow-lg hover:shadow-[#4ecdc4]/10"
+              style={{ fontFamily: 'Poppins, sans-serif' }}
+            >
+              {heroData.ctaText}
+            </a>
+          </div>
         </div>
       </div>
 

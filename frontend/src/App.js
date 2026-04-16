@@ -9,19 +9,22 @@ import ClientsSection from './components/ClientsSection';
 import CareersBanner from './components/CareersBanner';
 import InvestorSection from './components/InvestorSection';
 import Footer from './components/Footer';
+import AnimsitionOverlay from './components/AnimsitionOverlay';
 
 const HomePage = () => {
   return (
-    <div className="bg-[#0d1b1e] min-h-screen">
-      <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <ProductsSection />
-      <ClientsSection />
-      <CareersBanner />
-      <InvestorSection />
-      <Footer />
-    </div>
+    <AnimsitionOverlay>
+      <div className="bg-[#0d1b1e] min-h-screen">
+        <Navbar />
+        <HeroSection />
+        <AboutSection />
+        <ProductsSection />
+        <ClientsSection />
+        <CareersBanner />
+        <InvestorSection />
+        <Footer />
+      </div>
+    </AnimsitionOverlay>
   );
 };
 
