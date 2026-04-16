@@ -2,55 +2,35 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { products } from '../data/mock';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
-import useScrollReveal from '../hooks/useScrollReveal';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const ProductCard = ({ product }) => {
-  return (
-    <article className="group rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 h-full">
-      <div
-        className="h-full rounded-2xl p-6 md:p-8 flex flex-col"
-        style={{
-          borderTop: `8px solid ${product.borderColor}`,
-          backgroundColor: 'rgba(18, 18, 18, 0.7)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
-        }}
-      >
-        <h3 className="text-white text-[17px] font-medium mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
-          <a href={product.link} className="hover:text-gray-300 transition-colors duration-300">
-            {product.title}
-          </a>
-        </h3>
-        <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-1" style={{ fontFamily: 'Poppins, sans-serif' }}>
-          {product.description}
-        </p>
-        <div>
-          <a
-            href={product.link}
-            className="text-gray-300 text-[15px] hover:text-white transition-colors duration-300 inline-flex items-center gap-1"
-            style={{ fontFamily: 'Poppins, sans-serif' }}
-          >
-            Read More
-          </a>
-        </div>
-      </div>
-    </article>
-  );
-};
+const ProductCard = ({ product }) => (
+  <article className="group rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 h-full">
+    <div
+      className="h-full rounded-2xl p-6 md:p-8 flex flex-col"
+      style={{
+        borderTop: `8px solid ${product.borderColor}`,
+        backgroundColor: 'rgba(18, 18, 18, 0.7)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+      }}
+    >
+      <h3 className="text-white text-[17px] font-medium mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+        <a href={product.link} className="hover:text-gray-300 transition-colors duration-300">{product.title}</a>
+      </h3>
+      <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-1" style={{ fontFamily: 'Poppins, sans-serif' }}>
+        {product.description}
+      </p>
+      <a href={product.link} className="text-gray-300 text-[15px] hover:text-white transition-colors duration-300" style={{ fontFamily: 'Poppins, sans-serif' }}>
+        Read More
+      </a>
+    </div>
+  </article>
+);
 
 const ProductsSection = () => {
-  const [titleRef, titleVisible] = useScrollReveal({ threshold: 0.2 });
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    {
-      loop: true,
-      align: 'start',
-      slidesToScroll: 1,
-      breakpoints: {
-        '(min-width: 768px)': { slidesToScroll: 2 },
-        '(min-width: 1024px)': { slidesToScroll: 3 },
-      },
-    },
+    { loop: true, align: 'start', slidesToScroll: 1 },
     [Autoplay({ delay: 4000, stopOnInteraction: true })]
   );
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -58,7 +38,7 @@ const ProductsSection = () => {
 
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
-  const scrollTo = useCallback((index) => emblaApi && emblaApi.scrollTo(index), [emblaApi]);
+  const scrollTo = useCallback((i) => emblaApi && emblaApi.scrollTo(i), [emblaApi]);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
@@ -74,68 +54,44 @@ const ProductsSection = () => {
   }, [emblaApi, onSelect]);
 
   return (
-    <section
-      id="products"
-      className="relative min-h-screen flex items-center py-20 lg:py-28"
-      style={{
-        background: 'linear-gradient(to top, #24243e, #302b63, #0f0c29)',
-      }}
+    <div
+      className="relative w-full h-full flex items-center py-10"
+      style={{ background: 'linear-gradient(to top, #24243e, #302b63, #0f0c29)' }}
     >
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10 w-full">
-        <div
-          ref={titleRef}
-          className={`mb-10 flex items-center justify-between reveal-slide-top ${titleVisible ? 'revealed' : ''}`}
-        >
+        <div className="mb-8 flex items-center justify-between">
           <p className="text-gray-300 text-sm tracking-wider" style={{ fontFamily: 'Poppins, sans-serif' }}>
             Products and add-on's
           </p>
-          {/* Owl-style Nav Arrows */}
           <div className="flex items-center gap-2">
-            <button
-              onClick={scrollPrev}
-              className="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center text-gray-400 hover:border-[#c8a97e] hover:text-[#c8a97e] transition-all duration-300"
-            >
+            <button onClick={scrollPrev} className="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center text-gray-400 hover:border-[#c8a97e] hover:text-[#c8a97e] transition-all duration-300">
               <ChevronLeft size={18} />
             </button>
-            <button
-              onClick={scrollNext}
-              className="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center text-gray-400 hover:border-[#c8a97e] hover:text-[#c8a97e] transition-all duration-300"
-            >
+            <button onClick={scrollNext} className="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center text-gray-400 hover:border-[#c8a97e] hover:text-[#c8a97e] transition-all duration-300">
               <ChevronRight size={18} />
             </button>
           </div>
         </div>
 
-        {/* Embla Carousel (OwlCarousel-style) */}
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex gap-5">
             {products.map((product) => (
-              <div
-                key={product.id}
-                className="flex-[0_0_100%] md:flex-[0_0_48%] lg:flex-[0_0_31.5%] min-w-0"
-              >
+              <div key={product.id} className="flex-[0_0_100%] md:flex-[0_0_48%] lg:flex-[0_0_31.5%] min-w-0">
                 <ProductCard product={product} />
               </div>
             ))}
           </div>
         </div>
 
-        {/* Owl-style Dots */}
-        <div className="flex justify-center gap-2 mt-8">
+        <div className="flex justify-center gap-2 mt-6">
           {scrollSnaps.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => scrollTo(i)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                i === selectedIndex
-                  ? 'bg-[#c8a97e] w-8'
-                  : 'bg-gray-600 w-2 hover:bg-gray-400'
-              }`}
+            <button key={i} onClick={() => scrollTo(i)}
+              className={`h-2 rounded-full transition-all duration-300 ${i === selectedIndex ? 'bg-[#c8a97e] w-8' : 'bg-gray-600 w-2 hover:bg-gray-400'}`}
             />
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
