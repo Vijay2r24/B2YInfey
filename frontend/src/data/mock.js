@@ -85,11 +85,36 @@ export const sideMenuItems = [
   { label: 'Contact', href: '#' },
 ];
 
+export const heroSlides = [
+  {
+    heading: 'B2B Software Technologies Ltd',
+    subtitle: 'Your end-to-end partner for Dynamics 365 ERP, emerging technologies, and healthcare solutions.',
+    description: '25 Years of enabling digital transformation with Dynamics 365, ERP, Analytics & Healthcare',
+  },
+  {
+    heading: 'Microsoft Dynamics 365 ERP',
+    subtitle: 'Business Central & Finance & Operations implementation expertise across industries.',
+    description: 'Trusted by 150+ clients across India and abroad for ERP solutions',
+  },
+  {
+    heading: 'Emerging Technologies',
+    subtitle: 'AI & ML, Agentic Chatbots, Advanced Analytics, RPA, Cloud Migration and more.',
+    description: 'Driving innovation through cutting-edge technology solutions',
+  },
+  {
+    heading: 'Healthcare Solutions',
+    subtitle: 'GeniusDoc EMR, Practice Management, Patient Portal, Telehealth and Revenue Cycle Management.',
+    description: 'Comprehensive healthcare IT solutions for modern practices',
+  },
+  {
+    heading: 'Life Sciences & Pharma',
+    subtitle: 'B2B LIFT - Lifescience Information @ Finger Tips for pharma and life science industries.',
+    description: 'Specialized solutions for API, Formulations, Food Processing & Chemicals',
+  },
+];
+
 export const heroData = {
   established: 'establised 2000',
-  heading: 'B2B Software Technologies Ltd',
-  subtitle: 'Your end-to-end partner for Dynamics 365 ERP, emerging technologies, and healthcare solutions.',
-  description: '25 Years of enabling digital transformation with Dynamics 365, ERP, Analytics & Healthcare',
   ctaText: 'Talk to B2B Software',
   ctaLink: '#contact',
 };
@@ -161,6 +186,29 @@ export const clientLogos = [
   { name: 'Client 16', img: 'https://avccpalmdale.com/B2B/img/16.png' },
   { name: 'Client 17', img: 'https://avccpalmdale.com/B2B/img/17.png' },
   { name: 'Client 18', img: 'https://avccpalmdale.com/B2B/img/18.png' },
+];
+
+export const testimonials = [
+  {
+    id: 1,
+    quote: 'B2B Software has been a fantastic partner in our Dynamics 365 implementation. Their expertise in pharma industry processes is unmatched.',
+    author: 'CTO, Leading Pharma Company',
+  },
+  {
+    id: 2,
+    quote: 'The quality control add-on has significantly improved our manufacturing process compliance and reporting across all our facilities.',
+    author: 'VP Operations, Manufacturing Firm',
+  },
+  {
+    id: 3,
+    quote: 'GeniusDoc transformed our practice management with automated workflows and reduced costs substantially across our clinics.',
+    author: 'Director, Healthcare Organization',
+  },
+  {
+    id: 4,
+    quote: 'Their plant maintenance solution helped us achieve near-zero downtime in our production lines. Excellent support team.',
+    author: 'Plant Manager, Chemical Industry',
+  },
 ];
 
 export const investorData = {
