@@ -26,6 +26,16 @@ const HeroSection = () => {
 
   return (
     <div className={`relative w-full h-full overflow-hidden bg-white ${isActive ? 'section-active' : ''}`}>
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1644088379091-d574269d422f?w=1920&h=1080&fit=crop&q=80"
+          alt=""
+          className="w-full h-full object-cover hero-bg-image"
+        />
+        <div className="absolute inset-0 bg-white/75"></div>
+      </div>
+
       {/* White animated background */}
       <div className="hero-white-bg">
         {/* Soft gradient orbs */}

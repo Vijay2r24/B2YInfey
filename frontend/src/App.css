@@ -32,6 +32,18 @@ body {
   animation: fadeIn 0.6s ease-out forwards;
 }
 
+/* ========= HERO BACKGROUND IMAGE ========= */
+.hero-bg-image {
+  animation: heroBgZoom 25s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes heroBgZoom {
+  0% { transform: scale(1) translateX(0); }
+  50% { transform: scale(1.08) translateX(-1%); }
+  100% { transform: scale(1.04) translateX(1%); }
+}
+
 /* ========= HERO WHITE ANIMATED BACKGROUND ========= */
 .hero-white-bg {
   position: absolute;
