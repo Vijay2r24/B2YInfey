@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full z-50 bg-[#0a0a2e]/90 backdrop-blur-sm" style={{ fontFamily: 'Poppins, sans-serif' }}>
+      <header className="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm" style={{ fontFamily: 'Poppins, sans-serif' }}>
         <div className="max-w-[1400px] mx-auto flex items-center justify-between px-6 py-4">
           {/* Logo */}
           <a href="#" className="flex-shrink-0">
@@ -28,15 +28,14 @@ const Navbar = () => {
             className="hidden lg:flex items-center gap-0 rounded-full px-6 py-3"
             style={{
               backdropFilter: 'blur(15px)',
-              backgroundColor: 'hsla(240, 40%, 8%, 0.7)',
-              filter: 'contrast(0.958)',
+              backgroundColor: 'hsla(240, 40%, 15%, 0.85)',
             }}
           >
             {navItems.map((item, i) => (
               <React.Fragment key={item.label}>
                 <a
                   href={item.href}
-                  className="text-gray-300 hover:text-white text-sm px-4 py-1 transition-colors duration-300 whitespace-nowrap"
+                  className="text-gray-200 hover:text-white text-sm px-4 py-1 transition-colors duration-300 whitespace-nowrap"
                 >
                   {item.label}
                 </a>
@@ -61,17 +60,17 @@ const Navbar = () => {
             className="relative z-[60] w-10 h-10 flex flex-col items-center justify-center gap-1.5"
           >
             <span
-              className={`block w-7 h-0.5 bg-white transition-all duration-300 ${
+              className={`block w-7 h-0.5 bg-[#0a0a2e] transition-all duration-300 ${
                 menuOpen ? 'rotate-45 translate-y-2' : ''
               }`}
             />
             <span
-              className={`block w-7 h-0.5 bg-white transition-all duration-300 ${
+              className={`block w-7 h-0.5 bg-[#0a0a2e] transition-all duration-300 ${
                 menuOpen ? 'opacity-0' : ''
               }`}
             />
             <span
-              className={`block w-7 h-0.5 bg-white transition-all duration-300 ${
+              className={`block w-7 h-0.5 bg-[#0a0a2e] transition-all duration-300 ${
                 menuOpen ? '-rotate-45 -translate-y-2' : ''
               }`}
             />
